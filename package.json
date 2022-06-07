@@ -3,6 +3,10 @@
   "version": "0.1.0-alpha",
   "scripts": {
     "clean": "del dist",
+    "build": "run-s build:pug build:tailwindcss build:minify",
+    "build:pug": "pug ./pages --out ./dist",
+    "build:tailwindcss": "tailwindcss --input ./styles/main.css --output ./dist/main.css",
+    "build:minify": "esbuild ./dist/main.css --bundle --minify --allow-overwrite --outfile=./dist/main.css",
   },
   "author": "Nanai Jua <me@n7i.dev>",
   "license": "MIT",
