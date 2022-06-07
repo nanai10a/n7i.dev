@@ -8,6 +8,7 @@ specifiers:
   eslint: ^8.17.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-prettier: ^4.0.0
+  eslint-plugin-pug: ^1.2.4
   npm-run-all: ^4.1.5
   prettier: ^2.6.2
   pug-cli: 1.0.0-alpha6
@@ -24,6 +25,7 @@ devDependencies:
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
   eslint-plugin-prettier: 4.0.0_ucegkljdju7q4zmvwxzqoprf3y
+  eslint-plugin-pug: 1.2.4
   npm-run-all: 4.1.5
   prettier: 2.6.2
   pug-cli: 1.0.0-alpha6
@@ -911,6 +913,15 @@ packages:
       eslint-config-prettier: 8.5.0_eslint@8.17.0
       prettier: 2.6.2
       prettier-linter-helpers: 1.0.0
+    dev: true
+
+  /eslint-plugin-pug/1.2.4:
+    resolution: {integrity: sha512-p/GrX0BgZx/nx1cw/SSDuxEIdZGBeQdG+Cr5+YnpbvEqD0gO9SPEpWS4csZYKlIzxOCy2WxyyGDLKVsF3LD4Ww==}
+    dependencies:
+      lodash: 4.17.21
+      pug-lexer: 5.0.1
+      pug-parser: 6.0.0
+      pug-walk: 2.0.0
     dev: true
 
   /eslint-scope/7.1.1:
@@ -2041,6 +2052,13 @@ packages:
       token-stream: 0.0.1
     dev: true
 
+  /pug-parser/6.0.0:
+    resolution: {integrity: sha512-ukiYM/9cH6Cml+AOl5kETtM9NR3WulyVP2y4HOU45DyMim1IeP/OOiyEWRr6qk5I5klpsBnbuHpwKmTx6WURnw==}
+    dependencies:
+      pug-error: 2.0.0
+      token-stream: 1.0.0
+    dev: true
+
   /pug-runtime/2.0.5:
     resolution: {integrity: sha512-P+rXKn9un4fQY77wtpcuFyvFaBww7/91f3jHa154qU26qFAnOe6SW1CbIDcxiG5lLK9HazYrMCCuDvNgDQNptw==}
     dev: true
@@ -2053,6 +2071,10 @@ packages:
 
   /pug-walk/1.1.8:
     resolution: {integrity: sha512-GMu3M5nUL3fju4/egXwZO0XLi6fW/K3T3VTgFQ14GxNi8btlxgT5qZL//JwZFm/2Fa64J/PNS8AZeys3wiMkVA==}
+    dev: true
+
+  /pug-walk/2.0.0:
+    resolution: {integrity: sha512-yYELe9Q5q9IQhuvqsZNwA5hfPkMJ8u92bQLIMcsMxf/VADjNtEYptU+inlufAFYcWdHlwNfZOEnOOQrZrcyJCQ==}
     dev: true
 
   /pug/2.0.4:
@@ -2427,6 +2449,10 @@ packages:
 
   /token-stream/0.0.1:
     resolution: {integrity: sha1-zu78cXp2xDFvEm0LnbqlXX598Bo=}
+    dev: true
+
+  /token-stream/1.0.0:
+    resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: true
 
   /trim-newlines/4.0.2:
