@@ -1,0 +1,13 @@
+include ../mixins/head.pug
+include ../mixins/layout.pug
+include ../mixins/colored.pug
+include ../mixins/basic.pug
+
++head
+  +layout
+    span n#[+textprim 7]i.dev
+
+- var links = { about: "/about", history: "/history", skill: "/skill", gallery: "/gallery", contact: "/contact" };
+  main(class=flexcont)
+    each val, key in links
+      a(class=flexelem, href=val)= key
