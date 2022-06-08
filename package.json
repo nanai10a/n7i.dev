@@ -9,7 +9,7 @@
     "build:minify": "esbuild ./dist/main.css --bundle --minify --allow-overwrite --outfile=./dist/main.css",
     "dev": "run-p dev:serve dev:watch",
     "dev:serve": "esbuild --servedir=dist --serve=3000",
-    "dev:watch": "chokidar ./pages/**/* ./components/**/* ./styles/**/* -c 'pnpm build'"
+    "dev:watch": "chokidar ./pages/**/* ./mixins/**/* ./styles/**/* -c 'pnpm build'"
   },
   "author": "Nanai Jua <me@n7i.dev>",
   "license": "MIT",

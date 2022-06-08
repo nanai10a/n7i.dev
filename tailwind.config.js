@@ -1,5 +1,5 @@
 module.exports = {
-  content: ["./pages/**/*.pug", "./components/**/*.pug"],
+  content: ["./pages/**/*.pug", "./mixins/**/*.pug"],
   theme: {
     extend: {
       colors: {
