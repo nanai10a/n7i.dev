@@ -8,6 +8,8 @@ include ../mixins/basic.pug
     span n#[+textprim 7]i.dev
 
 - var links = { about: "/about", history: "/history", skill: "/skill", gallery: "/gallery", contact: "/contact" };
-  main(class=flexcont)
-    each val, key in links
-      a(class=flexelem, href=val)= key
+  main
+    ul(class=flexcont)
+      each val, key in links
+        li
+          a(href=val)= key
