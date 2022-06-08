@@ -57,6 +57,10 @@ module.exports = {
         "inv-surd": "#e2e3dd",
         "inv-on-surd": "#1a1c19",
       },
+      fontFamily: {
+        poi: ["'Poiret One'", "cursive"],
+        zen: ["'Zen Kaku Gothic New'", "sans-serif"],
+      },
     },
   },
   plugins: [],

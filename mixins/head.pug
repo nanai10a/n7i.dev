@@ -2,6 +2,13 @@ mixin head
   doctype html
   html(lang="en")
     head
+      link(href="https://fonts.googleapis.com", rel="preconnect")
+      link(href="https://fonts.gstatic.com", rel="preconnect", crossorigin)
+      link(
+        href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Zen+Kaku+Gothic+New&display=swap",
+        rel="stylesheet"
+      )
+
       link(rel="stylesheet", href="/main.css")
 
     body(class="bg-bgl text-on-bgl font-zen text-3xl dark:bg-bgd dark:text-on-bgd md:text-4xl lg:text-5xl")
