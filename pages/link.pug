@@ -1,0 +1,19 @@
+include ../mixins/head.pug
+include ../mixins/header.pug
+include ../mixins/colored.pug
+include ../mixins/basic.pug
+include ../mixins/footer.pug
+
+- var links = { "WIP: blog": "https://b.n7i.dev", "WIP: hobby": "https://h.n7i.dev" };
+
++head
+  +header
+    span link
+
+  main
+    ul(class=flexcont)
+      each val, key in links
+        li
+          a(href=val)= key
+
+  +footer
