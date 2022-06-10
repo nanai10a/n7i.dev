@@ -1,7 +1,10 @@
 mixin head
   doctype html
-  html(lang="en")
+  html(class="h-full" lang="en")
     head
+      meta(charset="utf-8")
+      meta(name="viewport" content="width=device-width")
+
       link(href="https://fonts.googleapis.com", rel="preconnect")
       link(href="https://fonts.gstatic.com", rel="preconnect", crossorigin)
       link(
@@ -11,5 +14,5 @@ mixin head
 
       link(rel="stylesheet", href="/main.css")
 
-    body(class="bg-bgl dark:bg-bgd text-on-bgl dark:text-on-bgd font-zen text-3xl md:text-4xl lg:text-5xl")
-      block
+    body(class="min-h-full bg-bgl dark:bg-bgd text-on-bgl dark:text-on-bgd font-zen text-xl md:text-2xl lg:text-3xl flex flex-col")
+        block
