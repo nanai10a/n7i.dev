@@ -24,6 +24,21 @@ pnpm dev
 
 ... and open [localhost:3000](http://localhost:3000) in your browser.
 
+## what's `replace.sh` ?
+
+ex:
+
+```sh
+cargo install ripgrep sd
+cat mt3-built.css | ./replace.sh
+```
+
+... then output can copy into `tailwind.config.js` .  
+`replace.sh` converts `mt3-built.css` as js code.
+
+in feature, this sh is replaced as js.  
+because it's depending `rg` , `sd` . they are so good tools, but take a little time (for build, install).
+
 ## roadmap
 
 [ ] **v0.10**
