@@ -76,20 +76,20 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 [ ] **v0.1**
   [ ] initial implements
     [ ] pages
-      [ ] `/` : navigations
-      [ ] `/about` : simple introduction
+      [x] `/` : navigations
+      [x] `/about` : simple introduction
       [ ] `/skill` : technical skills
       [ ] `/hobby` : my hobbies
       [ ] `/gallery` : my works
-      [ ] `/contact` : contacts to me
-      [ ] `/link` : link to another my sites
-    [ ] mixins
-      [ ] html template
-      [ ] header
-      [ ] footer
-      [ ] frequently used coloring
-    [ ] systems
-     [ ] `clear`
-     [ ] `build`
-     [ ] `dev`
+      [x] `/contact` : contacts to me
+      [x] `/link` : link to another my sites
+    [x] mixins
+      [x] html template
+      [x] header
+      [x] footer
+      [x] frequently used coloring
+    [x] systems
+     [x] `clear`
+     [x] `build`
+     [x] `dev`
   [ ] migrate to git-flow
