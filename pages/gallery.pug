@@ -1,0 +1,30 @@
+include ../mixins/head.pug
+include ../mixins/header.pug
+include ../mixins/colored.pug
+include ../mixins/basic.pug
+include ../mixins/footer.pug
+
+mixin githubref(href)
+  a(href="https://github.com/" + href)
+    span(class=elemicon data-icon="simple-icons:github")
+
++head
+  +header
+    span gallery
+
+  main
+    div(class=flexcont)
+      div(class=gridcont)
+        div(class=gridelem)
+          span(class=elemtitle) Icey Pudding
+            +githubref("Nanai10a/icey_pudding")
+          span Discord Bot for recording messages.
+          span built with Rust and serenity.
+
+        div(class=gridelem)
+          span(class=elemtitle) Vivara
+            +githubref("Nanai10a/vivara")
+          span Discord Bot for play musics on vc.
+          span built with Rust and twilight.
+
+  +footer
