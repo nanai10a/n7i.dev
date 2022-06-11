@@ -78,9 +78,9 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
     [ ] pages
       [x] `/` : navigations
       [x] `/about` : simple introduction
-      [ ] `/hobby` : my hobbies
       [ ] `/gallery` : my works
       [x] `/skill` : technical skills
+      [x] `/hobby` : my hobbies
       [x] `/contact` : contacts to me
       [x] `/link` : link to another my sites
     [x] mixins
