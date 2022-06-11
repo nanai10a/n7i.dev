@@ -1,0 +1,138 @@
+include ../mixins/head.pug
+include ../mixins/header.pug
+include ../mixins/colored.pug
+include ../mixins/basic.pug
+include ../mixins/footer.pug
+
+- var gridcont = "m-6 xl:mx-48 2xl:mx-64 text-2xl text-center grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-cols-min gap-6";
+- var gridelem = flexcont;
+- var elemtitle = "text-3xl flex items-center";
+- var elemicon = "ml-3 inline iconify-inline"
+
++head
+  +header
+    span skill
+
+  main
+    div(class=flexcont)
+      | languages
+      div(class=gridcont)
+        div(class=gridelem)
+          span(class=elemtitle) .#[+textprim rs]
+            span(class=elemicon data-icon="simple-icons:rust")
+          span love namings, features, and community.
+          span is very useful, and looking forward to the future.
+
+        div(class=gridelem)
+          span(class=elemtitle) .#[+textprim kt]
+            span(class=elemicon data-icon="simple-icons:kotlin")
+          span love notations, features.
+          span well balanced and great, and was fascinated by codes.
+
+        div(class=gridelem)
+          span(class=elemtitle) .go
+            span(class=elemicon data-icon="simple-icons:go")
+          span is fast and simple.
+          span in planning, becomes 2nd candicates of language.
+
+        div(class=gridelem)
+          span(class=elemtitle) .ts
+            span(class=elemicon data-icon="simple-icons:typescript")
+          span flexible use, interesting type system.
+          span don't like .js, so is my good compromise plan.
+
+        div(class=gridelem)
+          span(class=elemtitle) .java
+            span(class=elemicon data-icon="cib:java")
+          span my mother tongue, interesting oop approarch.
+          span if to use, reccomend .kt. my thinking affected.
+
+        div(class=gridelem)
+          span(class=elemtitle) .#[+textprim hs]
+            span(class=elemicon data-icon="simple-icons:haskell")
+          span very interesting type system and notations.
+          span funcional approarch is one of my most interestings things.
+
+        div(class=gridelem)
+          span(class=elemtitle) .c
+            span(class=elemicon data-icon="simple-icons:c")
+          span don't like, but absolutely required.
+          span can only use basic usages. i wish won't use this.
+
+        div(class=gridelem)
+          span(class=elemtitle) .cpp
+            span(class=elemicon data-icon="simple-icons:cplusplus")
+          span interesting features, "black magic"
+          span i'm interested in multiple approarches, and complex features.
+
+      | frameworks / solutions
+      div(class=gridcont)
+        div(class=gridelem)
+          span(class=elemtitle) react
+            span(class=elemicon data-icon="simple-icons:react")
+          span needings are just in one.
+          span has affinity with js / ts (jsx / tsx). and functional approarch.
+
+        div(class=gridelem)
+          span(class=elemtitle) #[+textprim next]
+            span(class=elemicon data-icon="simple-icons:nextdotjs")
+          span all in one, complete framework.
+          span amazing features, usability, and reliability.
+
+        div(class=gridelem)
+          span(class=elemtitle) #[+textprim tailwindcss]
+            span(class=elemicon data-icon="simple-icons:tailwindcss")
+          span useful approarch, easily integration.
+          span can styling relaxed. i like to use.
+
+        div(class=gridelem)
+          span(class=elemtitle) #[+textprim mongodb]
+            span(class=elemicon data-icon="simple-icons:mongodb")
+          span flexible and easily use.
+          span can use from multiple environments, and reliable praticality.
+
+        div(class=gridelem)
+          span(class=elemtitle) #[+textprim bevy]
+            span(class=elemicon data-icon="ic:round-videogame-asset")
+          span very interesting and hope to the future.
+          span learning how to build games with. still learning...
+
+        div(class=gridelem)
+          span(class=elemtitle) serenity
+            span(class=elemicon data-icon="simple-icons:discord")
+          span using for build of discord application.
+
+        div(class=gridelem)
+          span(class=elemtitle) jda
+            span(class=elemicon data-icon="simple-icons:discord")
+          span my first used framework. for build of discord application.
+
+      | others
+      div(class=gridcont)
+        div(class=gridelem)
+          span(class=elemtitle) html5
+            span(class=elemicon data-icon="simple-icons:html5")
+          span learning semantics, written by me is dirty.
+
+        div(class=gridelem)
+          span(class=elemtitle) css3
+            span(class=elemicon data-icon="simple-icons:css3")
+          span fighting styling will continue...
+
+        div(class=gridelem)
+          span(class=elemtitle) #[+textprim archlinux]
+            span(class=elemicon data-icon="simple-icons:archlinux")
+          span my home is arch. can basically use.
+
+        div(class=gridelem)
+          span(class=elemtitle) git
+            span(class=elemicon data-icon="simple-icons:git")
+          span mainly used with github, can basically use.
+
+        div(class=gridelem)
+          span(class=elemtitle) #[+textprim neovim]
+            span(class=elemicon data-icon="simple-icons:neovim")
+          span loves vi keybinds. but not be still mastered.
+
+  +footer
+
