@@ -12,7 +12,12 @@ include ../mixins/footer.pug
   main
     ul(class=flexcont)
       each val, key in contacts
-        li(class="flex items-center")
+        if val.href
+          - var title = "jump to another site.";
+        else
+          - var title = "";
+
+        li(class="flex items-center" title=title)
           span(class="mr-3 inline iconify-inline" data-icon=val.icon)
           if val.href
             a(href="https://" + val.href)= key
