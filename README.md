@@ -68,8 +68,8 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
   - [ ] improve systems
 - [ ] **v0.4**
   - [ ] styling `<a />`
-- [ ] **v0.3**
-  - [ ] refactor codes
+- [x] **v0.3**
+  - [x] refactor codes
 - [x] **v0.2**
   - [x] make actions
     - [x] ci
