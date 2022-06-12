@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "scripts": {
     "clean": "del dist",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint .github/workflows/*.yml mixins/**/*.pug pages/**/*.pug *.{js,json,yml}",
+    "lint:prettier": "prettier -c .github/workflows/*.yml mixins/**/*.pug pages/**/*.pug styles/**/*.css *.{js,json,yml,md}",
     "build": "run-s build:*",
     "build:pug": "pug ./pages --out ./dist",
     "build:tailwindcss": "tailwindcss --input ./styles/main.css --output ./dist/main.css",
