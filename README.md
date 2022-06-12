@@ -41,31 +41,35 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 
 ## roadmap
 
-- [ ] **v0.10**
+- [ ] **v0.12**
   - [ ] separate datas as other files
-- [ ] **v0.9**
+- [ ] **v0.11**
   - [ ] construct incremental build system
-- [ ] **v0.8**
+- [ ] **v0.10**
   - [ ] as embed assets
     - [ ] local css
     - [ ] local js
     - [ ] iconify
     - [ ] twemoji
-- [ ] **v0.7**
+- [ ] **v0.9**
   - [ ] migrate as twemoji
-- [ ] **v0.6**
+- [ ] **v0.8**
   - [ ] add breadcrumbs
-- [ ] **v0.5**
-  - [ ] styling `<a />`
-- [ ] **v0.4**
+- [ ] **v0.7**
   - [ ] change layout of pages
     - [ ] `/` : `/about` & `/skill` & `/contact`
     - [ ] `/gallery` : `/gallery`
     - [ ] `/blog` : integrated to `b.n7i.dev`
     - [ ] `/hobby` : `/hobby` integrated to `h.n7i.dev`
     - [ ] `/site` : `/link`
-- [ ] **v0.3**
+- [ ] **v0.6**
   - [ ] implements menubar from `/` page
+- [ ] **v0.5**
+  - [ ] improve systems
+- [ ] **v0.4**
+  - [ ] styling `<a />`
+- [ ] **v0.3**
+  - [ ] refactor codes
 - [x] **v0.2**
   - [x] make actions
     - [x] ci
