@@ -1,0 +1,52 @@
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .node-version
+
+      - name: setup pnpm
+        uses: pnpm/action-setup@v2
+
+      - name: resolve pnpm store directory
+        id: store
+        run: echo "::set-output name=dir::$(pnpm store path)"
+
+      - name: try to restore cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.store.outputs.dir }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: "${{ runner.os }}-pnpm-store-"
+
+      - name: install dependencies
+        run: pnpm install
+
+      - name: check lint
+        run: pnpm lint
+
+      - name: check build
+        run: pnpm build
+
+      - name: deploy to github pages
+        if: ${{ github.ref_type == 'tag' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: public
+          folder: dist
+
+          git-config-name: github-actions[bot]
+          git-config-email: 41898282+github-actions[bot]@users.noreply.github.com
+
+          commit-message: ${{ '🚀 deploy ' + github.ref_name + ' @ ' + github.repository + '@' + github.sha }}
