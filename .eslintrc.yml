@@ -7,3 +7,6 @@ extends:
   - "eslint:recommended"
   - "plugin:json/recommended"
   - "plugin:yml/standard"
+
+ignorePatterns:
+  - "!.*"
