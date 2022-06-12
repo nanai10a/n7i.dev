@@ -71,7 +71,6 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
     - [ ] ci
       - [ ] check
     - [ ] cd
-      - [ ] versioning
       - [ ] deploy
 - [x] **v0.1**
   - [x] initial implements
