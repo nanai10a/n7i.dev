@@ -4,7 +4,7 @@ include ../mixins/colored.pug
 include ../mixins/basic.pug
 include ../mixins/footer.pug
 
-- var links = { "WIP: blog": "https://b.n7i.dev", "WIP: hobby": "https://h.n7i.dev" };
+- var links = { blog: { href: "https://b.n7i.dev", wip: true }, hobby: { href: "https://h.n7i.dev", wip: true } };
 
 +head
   +header
@@ -14,6 +14,11 @@ include ../mixins/footer.pug
     ul(class=flexcont)
       each val, key in links
         li
-          a(href=val)= key
+          if val.wip
+            a(class="text-errl dark:text-errd flex items-center" href=val.href)
+              span(class="mr-3 inline iconify-inline" data-icon="ic:round-error")
+              span= key
+          else
+            a(href=val.href)= key
 
   +footer
