@@ -1,6 +1,6 @@
 {
   "name": "n7i.dev",
-  "version": "0.2.1-rc.1",
+  "version": "0.2.1-rc.2",
   "scripts": {
     "clean": "del dist",
     "lint": "run-p lint:*",
