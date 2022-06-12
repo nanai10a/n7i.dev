@@ -13,7 +13,7 @@ mixin icon(name)
 
   main
     div(class=cont)
-      | languages
+      span(class=conttitle) languages
       dl(class=gridcont)
         div(class=gridelem)
           dt(class=elemtitle) .#[+textprim rs] #[+icon("simple-icons:rust")]
@@ -63,7 +63,7 @@ mixin icon(name)
             | interesting features, "black magic" #[br]
             | i'm interested in multiple approarches, and complex features.
 
-      | frameworks / solutions
+      span(class=conttitle) frameworks / solutions
       dl(class=gridcont)
         div(class=gridelem)
           dt(class=elemtitle) react #[+icon("simple-icons:react")]
@@ -105,7 +105,7 @@ mixin icon(name)
           dd
             | my first used framework. for build of discord application.
 
-      | others
+      span(class=conttitle) others
       dl(class=gridcont)
         div(class=gridelem)
           dt(class=elemtitle) html5 #[+icon("simple-icons:html5")]
