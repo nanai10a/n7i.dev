@@ -11,9 +11,9 @@ include ../mixins/footer.pug
     span link
 
   main
-    ul(class=cont)
+    ul(class=linkscont)
       each val, key in links
-        li
+        li(class=linkselem)
           if val.wip
             a(class="text-errl dark:text-errd" href=val.href title="*under construction*")
               span(class="my-auto mr-3 inline iconify-inline" data-icon="ic:round-error")

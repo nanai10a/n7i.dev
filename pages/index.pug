@@ -11,9 +11,9 @@ include ../mixins/footer.pug
     span n#[+textprim 7]i.dev
 
   main
-    ul(class=cont)
+    ul(class=linkscont)
       each val, key in navs
-        li
+        li(class=linkselem)
           a(href=val)= key
 
   +footer
