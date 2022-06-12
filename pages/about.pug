@@ -10,18 +10,19 @@ include ../mixins/footer.pug
   +header
     span about
 
-  main(class=cont)
-    p(class=sections)
-      | 👋 hi, world. 🌏 #[br]
-      | I'm a #[+textprim maker] / developer. #[br]
-      | have writing code since #[+textprim 2020]. #[br]
-      | love #[+textprim Rust], #[+textprim Kotlin].
-    p(class=sections)
-      | usually play rhythm games, #[br]
-      | ex: #[+textprim Arcaea], #[+textprim Phigros], #[br]
-      | #[+textprim Rotaeno], #[+textprim osu!taiko]...
-    p(class=sections)
-      | love musics intensely, #[br]
-      | ex: #[+textprim Frums], #[+textprim t#[span(class="font-bold text-[0.625em]") +]pazolite]...
+  main
+    div(class=cont)
+      p(class=sections)
+        | 👋 hi, world. 🌏 #[br]
+        | I'm a #[+textprim maker] / developer. #[br]
+        | have writing code since #[+textprim 2020]. #[br]
+        | love #[+textprim Rust], #[+textprim Kotlin].
+      p(class=sections)
+        | usually play rhythm games, #[br]
+        | ex: #[+textprim Arcaea], #[+textprim Phigros], #[br]
+        | #[+textprim Rotaeno], #[+textprim osu!taiko]...
+      p(class=sections)
+        | love musics intensely, #[br]
+        | ex: #[+textprim Frums], #[+textprim t#[span(class="font-bold text-[0.625em]") +]pazolite]...
 
   +footer
