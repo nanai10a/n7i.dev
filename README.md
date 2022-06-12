@@ -74,11 +74,11 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
       [ ] versioning
       [ ] deploy
 [ ] **v0.1**
-  [ ] initial implements
-    [ ] pages
+  [x] initial implements
+    [x] pages
       [x] `/` : navigations
       [x] `/about` : simple introduction
-      [ ] `/gallery` : my works
+      [x] `/gallery` : my works
       [x] `/skill` : technical skills
       [x] `/hobby` : my hobbies
       [x] `/contact` : contacts to me
