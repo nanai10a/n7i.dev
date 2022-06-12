@@ -1,11 +1,11 @@
 plugins:
   - "@prettier/plugin-pug"
 
-arrowParens: "always"
+arrowParens: always
 printWidth: 100
-trailingComma: "all"
+trailingComma: all
 
-pugAttributeSeparator: "none"
-pugCommentPreserveSpaces: "trim-all"
-pugEmptyAttributes: "none"
-pugClassNotation: "attribute"
+pugAttributeSeparator: none
+pugCommentPreserveSpaces: trim-all
+pugEmptyAttributes: none
+pugClassNotation: attribute

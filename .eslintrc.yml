@@ -3,9 +3,9 @@ env:
   node: true
 
 plugins:
-  - "json"
-  - "yml"
-  - "pug"
+  - json
+  - yml
+  - pug
 
 extends:
   - "eslint:recommended"
