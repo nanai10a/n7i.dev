@@ -8,17 +8,18 @@ include ../mixins/footer.pug
   +header
     span about
 
-  main(class=flexcont)
-    span 👋 hi, world. 🌏
-    span I'm a #[+textprim maker] / developer.
-    span have writing code since #[+textprim 2020].
-    span love #[+textprim Rust], #[+textprim Kotlin].
-    span(class="h-4")
-    span usually play rhythm games,
-    span ex: #[+textprim Arcaea], #[+textprim Phigros],
-    span #[+textprim Rotaeno], #[+textprim osu!taiko]...
-    span(class="h-4")
-    span love musics intensely,
-    span ex: #[+textprim Frums], #[+textprim t#[span(class="font-bold text-[0.625em]") +]pazolite]...
+  main(class=cont)
+    p(class="mb-6")
+      | 👋 hi, world. 🌏 #[br]
+      | I'm a #[+textprim maker] / developer. #[br]
+      | have writing code since #[+textprim 2020]. #[br]
+      | love #[+textprim Rust], #[+textprim Kotlin].
+    p(class="my-6")
+      | usually play rhythm games, #[br]
+      | ex: #[+textprim Arcaea], #[+textprim Phigros], #[br]
+      | #[+textprim Rotaeno], #[+textprim osu!taiko]...
+    p(class="mt-6")
+      | love musics intensely, #[br]
+      | ex: #[+textprim Frums], #[+textprim t#[span(class="font-bold text-[0.625em]") +]pazolite]...
 
   +footer
