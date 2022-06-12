@@ -49,4 +49,4 @@ jobs:
           git-config-name: github-actions[bot]
           git-config-email: 41898282+github-actions[bot]@users.noreply.github.com
 
-          commit-message: ${{ '🚀 deploy ' + github.ref_name + ' @ ' + github.repository + '@' + github.sha }}
+          commit-message: ${{ format('🚀 deploy {0} @ {1}@{2}', github.ref_name, github.repository, github.sha) }}
