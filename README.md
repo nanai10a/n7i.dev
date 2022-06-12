@@ -89,6 +89,6 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
       - [x] footer
       - [x] frequently used coloring
     - [x] systems
-     - [x] `clear`
-     - [x] `build`
-     - [x] `dev`
+      - [x] `clear`
+      - [x] `build`
+      - [x] `dev`
