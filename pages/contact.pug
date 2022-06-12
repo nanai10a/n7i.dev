@@ -14,9 +14,10 @@ include ../mixins/footer.pug
       each val, key in contacts
         li(title=val.href ? "jump to another site." : undefined)
           if val.href
-            a(href=`https:\/\/${val.href}`)= key
+            a(href=`https:\/\/${val.href}`)
+              | #{key}
           else if val.text
-            span= key + " - " + val.text
+            | #{key} - #{val.text}
           else
             span
 
