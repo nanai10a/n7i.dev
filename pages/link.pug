@@ -15,9 +15,9 @@ include ../mixins/footer.pug
       each val, key in links
         li
           if val.wip
-            a(class="text-errl dark:text-errd flex items-center" href=val.href title="*under construction*")
-              span(class="mr-3 inline iconify-inline" data-icon="ic:round-error")
               span= key
+            a(class="text-errl dark:text-errd" href=val.href title="*under construction*")
+              span(class="my-auto mr-3 inline iconify-inline" data-icon="ic:round-error")
           else
             a(href=val.href title="jump to another site.")= key
 
