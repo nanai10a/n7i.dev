@@ -1,7 +1,5 @@
 plugins:
-  - "prettier"
   - "pug"
 
 extends:
   - "eslint:recommended"
-  - "plugin:prettier/recommended"
