@@ -73,7 +73,7 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
     - [ ] cd
       - [ ] versioning
       - [ ] deploy
-- [ ] **v0.1**
+- [x] **v0.1**
   - [x] initial implements
     - [x] pages
       - [x] `/` : navigations
