@@ -66,12 +66,12 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
     - [ ] `/site` : `/link`
 - [ ] **v0.3**
   - [ ] implements menubar from `/` page
-- [ ] **v0.2**
-  - [ ] make actions
-    - [ ] ci
-      - [ ] check
-    - [ ] cd
-      - [ ] deploy
+- [x] **v0.2**
+  - [x] make actions
+    - [x] ci
+      - [x] check
+    - [x] cd
+      - [x] deploy
 - [x] **v0.1**
   - [x] initial implements
     - [x] pages
