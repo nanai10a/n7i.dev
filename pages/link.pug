@@ -4,7 +4,7 @@ include ../mixins/colored.pug
 include ../mixins/basic.pug
 include ../mixins/footer.pug
 
-- const links = { blog: { href: "https:\/\/b.n7i.dev", wip: true }, hobby: { href: "https:\/\/h.n7i.dev", wip: true } };
+- const links = { blog: { href: "https://b.n7i.dev", wip: true }, hobby: { href: "https://h.n7i.dev", wip: true } };
 
 +head
   +header
@@ -17,7 +17,7 @@ include ../mixins/footer.pug
           if val.wip
             a(class="text-errl dark:text-errd" href=val.href title="*under construction*")
               span(class="my-auto mr-3 inline iconify-inline" data-icon="ic:round-error")
-              | #{key}
+              | #{ key }
           else
             a(href=val.href title="jump to another site.")= key
 

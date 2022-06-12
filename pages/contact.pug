@@ -8,7 +8,7 @@ include ../mixins/footer.pug
   +header
     span contact
 
-- const contacts = { Discord: { text: "Nanai10a#4213", icon: "simple-icons:discord" }, Twitter: { href: "twitter.com\/n7idev", icon: "simple-icons:twitter" }, GitHub: { href: "github.com\/Nanai10a", icon: "simple-icons:github" }, Keybase: { href: "keybase.io\/nanai10a", icon: "simple-icons:keybase" }, Reddit: { href: "www.reddit.com\/user\/Nanai10a", icon: "simple-icons:reddit" }, Qiita: { href: "qiita.com\/Nanai10a", icon: "ic:round-question-answer" }, Zenn: { href: "zenn.dev\/nanai10a", icon: "ic:round-question-answer" }, Connpass: { href: "connpass.com\/user\/Nanai10a", icon: "ic:round-event" }, SpeakerDeck: { href: "speakerdeck.com\/Nanai10a", icon: "ic:round-slideshow" }, AtCoder: { href: "atcoder.jp\/users\/Nanai10a", icon: "ic:round-emoji-events" }, LAPRAS: { href: "lapras.com\/public\/Nanai10a", icon: "ic:round-info" }, Email: { text: "me@n7i.dev", icon: "ic:round-email" } };
+- const contacts = { Discord: { text: "Nanai10a#4213", icon: "simple-icons:discord" }, Twitter: { href: "twitter.com/n7idev", icon: "simple-icons:twitter" }, GitHub: { href: "github.com/Nanai10a", icon: "simple-icons:github" }, Keybase: { href: "keybase.io/nanai10a", icon: "simple-icons:keybase" }, Reddit: { href: "www.reddit.com/user/Nanai10a", icon: "simple-icons:reddit" }, Qiita: { href: "qiita.com/Nanai10a", icon: "ic:round-question-answer" }, Zenn: { href: "zenn.dev/nanai10a", icon: "ic:round-question-answer" }, Connpass: { href: "connpass.com/user/Nanai10a", icon: "ic:round-event" }, SpeakerDeck: { href: "speakerdeck.com/Nanai10a", icon: "ic:round-slideshow" }, AtCoder: { href: "atcoder.jp/users/Nanai10a", icon: "ic:round-emoji-events" }, LAPRAS: { href: "lapras.com/public/Nanai10a", icon: "ic:round-info" }, Email: { text: "me@n7i.dev", icon: "ic:round-email" } };
   main
     ul(class=linkscont)
       each val, key in contacts
@@ -16,9 +16,9 @@ include ../mixins/footer.pug
           if val.href
             a(href=`https:\/\/${val.href}`)
               span(class="my-auto mr-3 inline iconify-inline" data-icon=val.icon)
-              | #{key}
+              | #{ key }
           else if val.text
             span(class="my-auto mr-3 inline iconify-inline" data-icon=val.icon)
-            | #{key} - #{val.text}
+            | #{ key } - #{ val.text }
 
   +footer
