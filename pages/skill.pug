@@ -4,6 +4,9 @@ include ../mixins/colored.pug
 include ../mixins/basic.pug
 include ../mixins/footer.pug
 
+mixin icon(name)
+  span(class=elemicon data-icon=name)
+
 +head
   +header
     span skill
@@ -11,142 +14,122 @@ include ../mixins/footer.pug
   main
     div(class=flexcont)
       | languages
-      div(class=gridcont)
+      dl(class=gridcont)
         div(class=gridelem)
-          span(class=elemtitle)
-            span .#[+textprim rs]
-            span(class=elemicon data-icon="simple-icons:rust")
-          span love namings, features, and community.
-          span is very useful, and looking forward to the future.
+          dt(class=elemtitle) .#[+textprim rs] #[+icon("simple-icons:rust")]
+          dd
+            | love namings, features, and community. #[br]
+            | is very useful, and looking forward to the future.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .#[+textprim kt]
-            span(class=elemicon data-icon="simple-icons:kotlin")
-          span love notations, features.
-          span well balanced and great, and was fascinated by codes.
+          dt(class=elemtitle) .#[+textprim kt] #[+icon("simple-icons:kotlin")]
+          dd
+            | love notations, features. #[br]
+            | well balanced and great, and was fascinated by codes.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .go
-            span(class=elemicon data-icon="simple-icons:go")
-          span is fast and simple.
-          span in planning, becomes 2nd candicates of language.
+          dt(class=elemtitle) .go #[+icon("simple-icons:go")]
+          dd
+            | is fast and simple. #[br]
+            | in planning, becomes 2nd candicates of language.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .ts
-            span(class=elemicon data-icon="simple-icons:typescript")
-          span flexible use, interesting type system.
-          span don't like .js, so is my good compromise plan.
+          dt(class=elemtitle) .ts #[+icon("simple-icons:typescript")]
+          dd
+            | flexible use, interesting type system. #[br]
+            | don't like .js, so is my good compromise plan.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .java
-            span(class=elemicon data-icon="cib:java")
-          span my mother tongue, interesting oop approarch.
-          span if to use, reccomend .kt. my thinking affected.
+          dt(class=elemtitle) .java #[+icon("cib:java")]
+          dd
+            | my mother tongue, interesting oop approarch. #[br]
+            | if to use, reccomend .kt. my thinking affected.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .#[+textprim hs]
-            span(class=elemicon data-icon="simple-icons:haskell")
-          span very interesting type system and notations.
-          span funcional approarch is one of my most interestings things.
+          dt(class=elemtitle) .#[+textprim hs] #[+icon("simple-icons:haskell")]
+          dd
+            | very interesting type system and notations. #[br]
+            | funcional approarch is one of my most interestings things.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .c
-            span(class=elemicon data-icon="simple-icons:c")
-          span don't like, but absolutely required.
-          span can only use basic usages. i wish won't use this.
+          dt(class=elemtitle) .c #[+icon("simple-icons:c")]
+          dd
+            | don't like, but absolutely required. #[br]
+            | can only use basic usages. i wish won't use this.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span .cpp
-            span(class=elemicon data-icon="simple-icons:cplusplus")
-          span interesting features, "black magic"
-          span i'm interested in multiple approarches, and complex features.
+          dt(class=elemtitle) .cpp #[+icon("simple-icons:cplusplus")]
+          dd
+            | interesting features, "black magic" #[br]
+            | i'm interested in multiple approarches, and complex features.
 
       | frameworks / solutions
-      div(class=gridcont)
+      dl(class=gridcont)
         div(class=gridelem)
-          span(class=elemtitle)
-            span react
-            span(class=elemicon data-icon="simple-icons:react")
-          span needings are just in one.
-          span has affinity with js / ts (jsx / tsx). and functional approarch.
+          dt(class=elemtitle) react #[+icon("simple-icons:react")]
+          dd
+            | needings are just in one. #[br]
+            | has affinity with js / ts (jsx / tsx). and functional approarch.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span #[+textprim next]
-            span(class=elemicon data-icon="simple-icons:nextdotjs")
-          span all in one, complete framework.
-          span amazing features, usability, and reliability.
+          dt(class=elemtitle) #[+textprim next] #[+icon("simple-icons:nextdotjs")]
+          dd
+            | all in one, complete framework. #[br]
+            | amazing features, usability, and reliability.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span #[+textprim tailwindcss]
-            span(class=elemicon data-icon="simple-icons:tailwindcss")
-          span useful approarch, easily integration.
-          span can styling relaxed. i like to use.
+          dt(class=elemtitle) #[+textprim tailwindcss] #[+icon("simple-icons:tailwindcss")]
+          dd
+            | useful approarch, easily integration. #[br]
+            | can styling relaxed. i like to use.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span #[+textprim mongodb]
-            span(class=elemicon data-icon="simple-icons:mongodb")
-          span flexible and easily use.
-          span can use from multiple environments, and reliable praticality.
+          dt(class=elemtitle) #[+textprim mongodb] #[+icon("simple-icons:mongodb")]
+          dd
+            | flexible and easily use. #[br]
+            | can use from multiple environments, and reliable praticality.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span #[+textprim bevy]
-            span(class=elemicon data-icon="ic:round-videogame-asset")
-          span very interesting and hope to the future.
-          span learning how to build games with. still learning...
+          dt(class=elemtitle) #[+textprim bevy] #[+icon("ic:round-videogame-asset")]
+          dd
+            | very interesting and hope to the future. #[br]
+            | learning how to build games with. still learning...
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span serenity
-            span(class=elemicon data-icon="simple-icons:discord")
-          span using for build of discord application.
+          dt(class=elemtitle) serenity #[+icon("simple-icons:discord")]
+          dd
+            | using for build of discord application.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span jda
-            span(class=elemicon data-icon="simple-icons:discord")
-          span my first used framework. for build of discord application.
+          dt(class=elemtitle) jda #[+icon("simple-icons:discord")]
+          dd
+            | my first used framework. for build of discord application.
 
       | others
-      div(class=gridcont)
+      dl(class=gridcont)
         div(class=gridelem)
-          span(class=elemtitle)
-            span html5
-            span(class=elemicon data-icon="simple-icons:html5")
-          span learning semantics, written by me is dirty.
+          dt(class=elemtitle) html5 #[+icon("simple-icons:html5")]
+          dd
+            | learning semantics, written by me is dirty.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span css3
-            span(class=elemicon data-icon="simple-icons:css3")
-          span fighting styling will continue...
+          dt(class=elemtitle) css3 #[+icon("simple-icons:css3")]
+          dd
+            | fighting styling will continue...
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span #[+textprim archlinux]
-            span(class=elemicon data-icon="simple-icons:archlinux")
-          span my home is arch. can basically use.
+          dt(class=elemtitle) #[+textprim archlinux] #[+icon("simple-icons:archlinux")]
+          dd
+            | my home is arch. can basically use.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span git
-            span(class=elemicon data-icon="simple-icons:git")
-          span mainly used with github, can basically use.
+          dt(class=elemtitle) git #[+icon("simple-icons:git")]
+          dd
+            | mainly used with github, can basically use.
 
         div(class=gridelem)
-          span(class=elemtitle)
-            span #[+textprim neovim]
-            span(class=elemicon data-icon="simple-icons:neovim")
-          span loves vi keybinds. but not be still mastered.
+          dt(class=elemtitle) #[+textprim neovim] #[+icon("simple-icons:neovim")]
+          dd
+            | loves vi keybinds. but not be still mastered.
 
   +footer
