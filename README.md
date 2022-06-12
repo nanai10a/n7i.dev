@@ -41,55 +41,55 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 
 ## roadmap
 
-[ ] **v0.10**
-  [ ] separate datas as other files
-[ ] **v0.9**
-  [ ] construct incremental build system
-[ ] **v0.8**
-  [ ] as embed assets
-    [ ] local css
-    [ ] local js
-    [ ] iconify
-    [ ] twemoji
-[ ] **v0.7**
-  [ ] migrate as twemoji
-[ ] **v0.6**
-  [ ] add breadcrumbs
-[ ] **v0.5**
-  [ ] styling `<a />`
-[ ] **v0.4**
-  [ ] change layout of pages
-    [ ] `/` : `/about` & `/skill` & `/contact`
-    [ ] `/gallery` : `/gallery`
-    [ ] `/blog` : integrated to `b.n7i.dev`
-    [ ] `/hobby` : `/hobby` integrated to `h.n7i.dev`
-    [ ] `/site` : `/link`
-[ ] **v0.3**
-  [ ] implements menubar from `/` page
-[ ] **v0.2**
-  [ ] make actions
-    [ ] ci
-      [ ] check
-    [ ] cd
-      [ ] versioning
-      [ ] deploy
-[ ] **v0.1**
-  [x] initial implements
-    [x] pages
-      [x] `/` : navigations
-      [x] `/about` : simple introduction
-      [x] `/gallery` : my works
-      [x] `/skill` : technical skills
-      [x] `/hobby` : my hobbies
-      [x] `/contact` : contacts to me
-      [x] `/link` : link to another my sites
-    [x] mixins
-      [x] html template
-      [x] header
-      [x] footer
-      [x] frequently used coloring
-    [x] systems
-     [x] `clear`
-     [x] `build`
-     [x] `dev`
-  [ ] migrate to git-flow
+- [ ] **v0.10**
+  - [ ] separate datas as other files
+- [ ] **v0.9**
+  - [ ] construct incremental build system
+- [ ] **v0.8**
+  - [ ] as embed assets
+    - [ ] local css
+    - [ ] local js
+    - [ ] iconify
+    - [ ] twemoji
+- [ ] **v0.7**
+  - [ ] migrate as twemoji
+- [ ] **v0.6**
+  - [ ] add breadcrumbs
+- [ ] **v0.5**
+  - [ ] styling `<a />`
+- [ ] **v0.4**
+  - [ ] change layout of pages
+    - [ ] `/` : `/about` & `/skill` & `/contact`
+    - [ ] `/gallery` : `/gallery`
+    - [ ] `/blog` : integrated to `b.n7i.dev`
+    - [ ] `/hobby` : `/hobby` integrated to `h.n7i.dev`
+    - [ ] `/site` : `/link`
+- [ ] **v0.3**
+  - [ ] implements menubar from `/` page
+- [ ] **v0.2**
+  - [ ] make actions
+    - [ ] ci
+      - [ ] check
+    - [ ] cd
+      - [ ] versioning
+      - [ ] deploy
+- [ ] **v0.1**
+  - [x] initial implements
+    - [x] pages
+      - [x] `/` : navigations
+      - [x] `/about` : simple introduction
+      - [x] `/gallery` : my works
+      - [x] `/skill` : technical skills
+      - [x] `/hobby` : my hobbies
+      - [x] `/contact` : contacts to me
+      - [x] `/link` : link to another my sites
+    - [x] mixins
+      - [x] html template
+      - [x] header
+      - [x] footer
+      - [x] frequently used coloring
+    - [x] systems
+     - [x] `clear`
+     - [x] `build`
+     - [x] `dev`
+  - [ ] migrate to git-flow
