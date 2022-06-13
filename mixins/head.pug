@@ -1,9 +1,18 @@
-mixin head
+mixin head(title)
   doctype html
   html(lang="en")
     head
       meta(charset="utf-8")
       meta(name="viewport" content="width=device-width")
+      meta(name="colorscheme" content="dark light")
+
+      if title
+        title #{title} - n7i.dev
+      else
+        title n7i.dev
+
+      meta(name="description" content="site of nanai.")
+      meta(name="author" content="Nanai Jua")
 
       link(href="https://fonts.googleapis.com" rel="preconnect")
       link(href="https://fonts.gstatic.com" rel="preconnect" crossorigin)
