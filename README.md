@@ -66,8 +66,8 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
   - [ ] implements menubar from `/` page
 - [ ] **v0.5**
   - [ ] improve systems
-- [ ] **v0.4**
-  - [ ] styling `<a />`
+- [x] **v0.4**
+  - [x] styling `<a />`
 - [x] **v0.3**
   - [x] refactor codes
 - [x] **v0.2**
