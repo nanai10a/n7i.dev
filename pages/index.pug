@@ -14,6 +14,6 @@ include ../mixins/footer.pug
     ul(class=linkscont)
       each val, key in navs
         li(class=linkselem)
-          a(href=val)= key
+          a(class=linkmarkp href=val)= key
 
   +footer

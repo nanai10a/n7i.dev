@@ -14,7 +14,7 @@ include ../mixins/footer.pug
       each val, key in contacts
         li(class=linkselem title=val.href ? "jump to another site." : undefined)
           if val.href
-            a(href=`https:\/\/${val.href}`)
+            a(class=linkmarkp href=`https:\/\/${val.href}`)
               span(class="my-auto mr-3 inline iconify-inline" data-icon=val.icon)
               | #{ key }
           else if val.text
