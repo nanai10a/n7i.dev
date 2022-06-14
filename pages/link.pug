@@ -15,6 +15,7 @@ include ../mixins/footer.pug
       each val, key in links
         li(class=linkselem)
           if val.wip
+            // prettier-ignore: wasn't recognized interpolation with back quote
             a(class=`text-errl dark:text-errd ${linkmarke}` href=val.href title="*under construction*")
               span(class="my-auto mr-3 inline iconify-inline" data-icon="ic:round-error")
               | #{ key }
