@@ -53,8 +53,8 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 - [ ] **v0.6**
   - [ ] implements menubar from `/` page
 - [ ] **v0.5**
-  - [ ] migrate as twemoji
-    - [ ] replace raw emoji as svg image
+  - [x] migrate as twemoji
+    - [x] replace raw emoji as svg image
   - [ ] construct incremental build system
     - [ ] separate css to each html
     - [ ] construct fs watcher
