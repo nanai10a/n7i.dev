@@ -41,18 +41,6 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 
 ## roadmap
 
-- [ ] **v0.12**
-  - [ ] separate datas as other files
-- [ ] **v0.11**
-  - [ ] construct incremental build system
-- [ ] **v0.10**
-  - [ ] as embed assets
-    - [ ] local css
-    - [ ] local js
-    - [ ] iconify
-    - [ ] twemoji
-- [ ] **v0.9**
-  - [ ] migrate as twemoji
 - [ ] **v0.8**
   - [ ] add breadcrumbs
 - [ ] **v0.7**
@@ -65,7 +53,15 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 - [ ] **v0.6**
   - [ ] implements menubar from `/` page
 - [ ] **v0.5**
+  - [ ] migrate as twemoji
+  - [ ] construct incremental build system
   - [ ] improve systems
+    - [ ] separate datas as other files
+    - [ ] as embed assets
+      - [ ] local css
+      - [ ] local js
+      - [ ] iconify
+      - [ ] twemoji
 - [x] **v0.4**
   - [x] styling `<a />`
 - [x] **v0.3**
