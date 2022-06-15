@@ -54,7 +54,10 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
   - [ ] implements menubar from `/` page
 - [ ] **v0.5**
   - [ ] migrate as twemoji
+    - [ ] replace raw emoji as svg image
   - [ ] construct incremental build system
+    - [ ] separate css to each html
+    - [ ] construct fs watcher
   - [ ] improve systems
     - [ ] separate datas as other files
     - [ ] as embed assets
@@ -62,6 +65,12 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
       - [ ] local js
       - [ ] iconify
       - [ ] twemoji
+  - [ ] improve local server
+    - [ ] make custom server
+    - [ ] for dev
+      - [ ] hot reloadable
+    - [ ] for production
+      - [ ] serve static file fastly
 - [x] **v0.4**
   - [x] styling `<a />`
 - [x] **v0.3**
