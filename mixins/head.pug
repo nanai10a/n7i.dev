@@ -28,6 +28,9 @@ mixin head(title)
 
       script(src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js")
       script
+        | /* eslint-env browser, es2022 */
+        | /* global twemoji:readonly */
+        |
         | const opts = { folder: "svg", ext: ".svg", className: "h-[1.2em] w-[1.2em] mr-[.05em] ml-[.1em] align-[-.2em] inline" };
         | const callback = () => twemoji.parse(document.body, opts);
         | const listen = (fn) => document.addEventListener("DOMContentLoaded", fn);
