@@ -24,6 +24,8 @@
     "@prettier/plugin-pug": "^2.1.0",
     "@types/node": "^18.0.0",
     "@types/pug": "^2.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
     "chokidar": "^3.5.3",
     "chokidar-cli": "^3.0.0",
     "cssnano": "^5.1.11",
