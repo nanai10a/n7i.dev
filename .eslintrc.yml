@@ -1,9 +1,11 @@
 plugins:
+  - "@typescript-eslint"
   - json
   - yml
   - pug
 
 extends:
+  - "plugin:@typescript-eslint/recommended"
   - "eslint:recommended"
   - "plugin:json/recommended"
   - "plugin:yml/standard"
