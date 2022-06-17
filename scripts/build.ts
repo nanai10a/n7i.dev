@@ -31,7 +31,7 @@ const watch = async () => {
           const mincss = await minifyCssnano(css);
 
           const html = await buildPug(filepath, { __tailwindcss__: mincss });
-          const minhtml = /* await minifyHtmlnano(html); */ html;
+          const minhtml = await minifyHtmlnano(html);
 
           await fs.writeFile(asDist(filepath), minhtml, FS_OPTS);
         }
