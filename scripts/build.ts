@@ -20,7 +20,7 @@ const FS_OPTS = { encoding: "utf-8" as const };
 const watch = async () => {
   const boot = await watchFiles();
   boot(async (filepath) => {
-    console.log(`detected: ${filepath}`);
+    console.log(`👀 changed => ${filepath}`);
 
     switch (getExt(filepath)) {
       case ".pug":
@@ -56,6 +56,8 @@ const watch = async () => {
 };
 
 const buildPug = async (filepath: Path, locals: Locals) => {
+  console.log(`🏗️ build(pug) <= ${filepath}`);
+
   const opts = {
     basedir: process.cwd(),
     filters: filters,
@@ -81,6 +83,8 @@ const filters = {
 };
 
 const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
+  console.log("🏗️ build(tailwindcss) <=");
+
   const tmpdir = await genTmpdir();
 
   const cssfile: Path = path.join(tmpdir, "in.css");
@@ -113,6 +117,8 @@ const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
 };
 
 const minifyEsbuild = async (src: Code): Promise<Code> => {
+  console.log("🗜️ optimize(esbuild) <=");
+
   const opts = {
     charset: "utf8" as const,
     loader: "js" as const,
@@ -125,6 +131,8 @@ const minifyEsbuild = async (src: Code): Promise<Code> => {
 };
 
 const minifyHtmlnano = async (src: Code): Promise<Code> => {
+  console.log("🗜️ optimize(htmlnano) <=");
+
   const opts = {
     minifyCss: false, // Tips: if this enabled, postcss inside htmlnano throws about cannot recognize properties prefixed `-webkit` .
   };
@@ -134,6 +142,8 @@ const minifyHtmlnano = async (src: Code): Promise<Code> => {
 };
 
 const minifyCssnano = async (src: Code): Promise<Code> => {
+  console.log("🗜️ optimize(cssnano) <=");
+
   const opts = {
     preset: "advanced",
   };
@@ -147,7 +157,7 @@ const minifyCssnano = async (src: Code): Promise<Code> => {
 const watchFiles = async () => (listener: (_: Path) => unknown) => {
   const watcher = chokidar.watch(["mixins", "pages", "scripts", "styles"]);
 
-  watcher.on("ready", () => console.log("watching files with chokidar..."));
+  watcher.on("ready", () => console.log("🧐 watching files"));
   watcher.on("change", listener);
 };
 
@@ -181,5 +191,5 @@ const genTmpdir = async (): Promise<Path> => {
 
 // --- --- --- --- --- --- --- --- ---
 
-console.log(`running on: ${process.cwd()}`);
+console.log(`💨 cwd => ${process.cwd()}`);
 watch();
