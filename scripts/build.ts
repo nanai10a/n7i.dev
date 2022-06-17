@@ -36,11 +36,14 @@ const watch = async () => {
         const dest = asDist(chExt(filepath, ".html"));
         await fs.writeFile(dest, minhtml, FS_OPTS);
 
+        console.log(`✅ built html => ${dest}`);
 
         return;
       }
 
       default: {
+        console.log("😌 nothing to do");
+
         return;
       }
     }
