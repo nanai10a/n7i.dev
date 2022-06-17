@@ -1,7 +1,6 @@
 /* eslint-env node, es2022 */
 
 module.exports = {
-  content: ["./pages/**/*.pug", "./mixins/**/*.pug"],
   theme: {
     extend: {
       colors: {
