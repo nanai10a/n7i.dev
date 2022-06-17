@@ -56,7 +56,10 @@ const watch = async () => {
 };
 
 const buildPug = async (filepath: Path, locals: Locals) => {
-  const opts = { basedir: process.cwd(), filters: filters };
+  const opts = {
+    basedir: process.cwd(),
+    filters: filters,
+  };
   const template = pug.compileFile(filepath, opts);
 
   locals = { __tailwindcss__: "", ...locals };
@@ -109,12 +112,13 @@ const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
 };
 
 const minifyEsbuild = async (src: Code): Promise<Code> => {
-  const { code } = await esbuild.transform(src, {
-    charset: "utf8",
-    loader: "js",
+  const opts = {
+    charset: "utf8" as const,
+    loader: "js" as const,
     minify: true,
     target: ["browser", "es2022"],
-  });
+  };
+  const { code } = await esbuild.transform(src, opts);
 
   return code;
 };
@@ -129,7 +133,12 @@ const minifyHtmlnano = async (src: Code): Promise<Code> => {
 };
 
 const minifyCssnano = async (src: Code): Promise<Code> => {
-  const { css } = await postcss(cssnano({ preset: "advanced" })).process(src, { from: undefined });
+  const opts = {
+    preset: "advanced",
+  };
+  const { css } = await postcss(cssnano(opts)).process(src, {
+    from: undefined,
+  });
 
   return css;
 };
