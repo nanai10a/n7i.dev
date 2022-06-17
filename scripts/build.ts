@@ -108,6 +108,7 @@ const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
 
   const css = await fs.readFile(outcssfile, FS_OPTS);
 
+  fs.rm(tmpdir, { recursive: true });
   return css;
 };
 
