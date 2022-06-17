@@ -9,6 +9,7 @@ import cssnano from "cssnano";
 import postcss from "postcss";
 import chokidar from "chokidar";
 import crypto from "crypto";
+import posthtml from "posthtml";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists `.d.ts`
 const htmlnano = require("htmlnano");
@@ -119,7 +120,10 @@ const minifyEsbuild = async (src: Code): Promise<Code> => {
 };
 
 const minifyHtmlnano = async (src: Code): Promise<Code> => {
-  const html: string = await htmlnano.process(src, {}, htmlnano.presets.max);
+  const opts = {
+    minifyCss: false, // Tips: if this enabled, postcss inside htmlnano throws about cannot recognize properties prefixed `-webkit` .
+  };
+  const { html } = await posthtml([htmlnano(opts, htmlnano.presets.max)]).process(src);
 
   return html;
 };
