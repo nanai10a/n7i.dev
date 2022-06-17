@@ -172,7 +172,7 @@ const asDist = (src: Path): Path => {
 
 const genTmpdir = async (): Promise<Path> => {
   const uuid = crypto.randomUUID();
-  const tmpdir = path.join(".tmp", uuid);
+  const tmpdir = path.join("dist", ".tmp", uuid);
 
   await fs.mkdir(tmpdir, { recursive: true });
 
