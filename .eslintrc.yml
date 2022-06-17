@@ -10,5 +10,13 @@ extends:
   - "plugin:json/recommended"
   - "plugin:yml/standard"
 
+rules:
+  no-unused-vars:
+    - "error"
+    - varsIgnorePattern: "^_"
+      argsIgnorePattern: "^_"
+      destructuredArrayIgnorePattern: "^_"
+      caughtErrorsIgnorePattern: "^_"
+
 ignorePatterns:
   - "!.*"
