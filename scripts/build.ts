@@ -23,35 +23,27 @@ const watch = async () => {
     console.log(`👀 changed => ${filepath}`);
 
     switch (getExt(filepath)) {
-      case ".pug":
-        {
-          const partialhtml = await buildPug(filepath, {});
+      case ".pug": {
+        const partialhtml = await buildPug(filepath, {});
 
-          const tailwindcss = await fs.readFile(MAIN_CSS_FILEPATH, FS_OPTS);
-          const css = await buildTailwindcss(tailwindcss, partialhtml);
-          const mincss = await minifyCssnano(css);
+        const tailwindcss = await fs.readFile(MAIN_CSS_FILEPATH, FS_OPTS);
+        const css = await buildTailwindcss(tailwindcss, partialhtml);
+        const mincss = await minifyCssnano(css);
 
-          const html = await buildPug(filepath, { __tailwindcss__: mincss });
-          const minhtml = await minifyHtmlnano(html);
+        const html = await buildPug(filepath, { __tailwindcss__: mincss });
+        const minhtml = await minifyHtmlnano(html);
 
-          await fs.writeFile(asDist(chExt(filepath, ".html")), minhtml, FS_OPTS);
-        }
-        break;
+        const dest = asDist(chExt(filepath, ".html"));
+        await fs.writeFile(dest, minhtml, FS_OPTS);
 
-      case ".css":
-        {
-          console.error("ignored file.");
-        }
-        break;
 
-      case ".ts":
-        {
-          console.error("ignored file.");
-        }
-        break;
+        return;
+      }
+
+      default: {
+        return;
+      }
     }
-
-    console.error("non-target file.");
   });
 };
 
