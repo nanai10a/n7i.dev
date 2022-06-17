@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^2.1.0",
+    "chokidar": "^3.5.3",
     "chokidar-cli": "^3.0.0",
     "del-cli": "^4.0.1",
     "esbuild": "^0.14.43",
