@@ -34,7 +34,7 @@ const watch = async () => {
           const html = await buildPug(filepath, { __tailwindcss__: mincss });
           const minhtml = await minifyHtmlnano(html);
 
-          await fs.writeFile(asDist(filepath), minhtml, FS_OPTS);
+          await fs.writeFile(asDist(chExt(filepath, ".html")), minhtml, FS_OPTS);
         }
         break;
 
