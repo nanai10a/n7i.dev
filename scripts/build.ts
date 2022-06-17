@@ -125,7 +125,7 @@ const minifyHtmlnano = async (src: Code): Promise<Code> => {
 };
 
 const minifyCssnano = async (src: Code): Promise<Code> => {
-  const { css } = await postcss(cssnano({ preset: "advanced" })).process(src);
+  const { css } = await postcss(cssnano({ preset: "advanced" })).process(src, { from: undefined });
 
   return css;
 };
