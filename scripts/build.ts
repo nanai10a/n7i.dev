@@ -115,6 +115,7 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
 
     svg = response.text();
 
+    // Tips: doesn't need await this: do caching
     fsp.writeFile(cachepath, svg, FS_OPTS);
   }
 
@@ -207,6 +208,7 @@ const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
 
   const css = await fsp.readFile(outcssfile, FS_OPTS);
 
+  // Tips: doesn't need await this: clean up temporary directory
   fsp.rm(tmpdir, { recursive: true });
   return css;
 };
