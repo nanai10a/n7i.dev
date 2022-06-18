@@ -232,6 +232,7 @@ const minifyHtmlnano = async (src: Code): Promise<Code> => {
   console.log("🗜️ optimize(htmlnano) <=");
 
   const opts = {
+    collapseWhitespace: "aggressive",
     minifyCss: false, // Tips: if this enabled, postcss inside htmlnano throws about cannot recognize properties prefixed `-webkit` .
   };
   const { html } = await posthtml([htmlnano(opts, htmlnano.presets.max)]).process(src);
