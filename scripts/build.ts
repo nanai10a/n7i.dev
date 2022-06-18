@@ -75,7 +75,6 @@ const buildPug = async (filepath: Path, locals: Locals) => {
 
   const opts = {
     basedir: process.cwd(),
-    filters: filters,
   };
   const template = pug.compileFile(filepath, opts);
 
@@ -176,11 +175,6 @@ const filterIconify = (txt: string, opts: Record<string, unknown>) => {
   const svg = element.toString();
 
   return svg;
-};
-
-const filters = {
-  twemoji: filterTwemoji,
-  iconify: filterIconify,
 };
 
 const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
