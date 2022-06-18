@@ -127,9 +127,16 @@ const filters = {
       .filter(([_, val]) => val !== undefined)
       .map(([key, val]) => [key, String(val)]);
     const stropts = Object.fromEntries(stroptsentries);
-    const attrs = Object.assign(SVG_ATTRIBUTES, stropts);
-    // attrs["class"] = "h-[1.2em] w-[1.2em] mr-[.05em] ml-[.1em] align-[-.2em] inline";
 
+    const holdattrs = (element.firstChild as HTMLElement).attributes;
+    const attrs = {
+      ...SVG_ATTRIBUTES,
+      ...stropts,
+      width: "1.2em",
+      height: "1.2em",
+      class: "mr-[.05em] ml-[.1em] align-[-.2em] inline",
+      ...holdattrs,
+    };
     (element.firstChild as HTMLElement).setAttributes(attrs);
     svg = element.toString();
 
