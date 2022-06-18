@@ -11,7 +11,7 @@ import chokidar from "chokidar";
 import crypto from "crypto";
 import posthtml from "posthtml";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists `.d.ts`
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
 const htmlnano = require("htmlnano");
 
 const MAIN_CSS_FILEPATH = "styles/main.css";
