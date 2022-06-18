@@ -87,97 +87,100 @@ const buildPug = async (filepath: Path, locals: Locals) => {
 
 type Locals = Partial<{ __tailwindcss__: string }>;
 
+const filterTwemoji = (txt: string, opts: Record<string, unknown>) => {
+  opts["filename"] = undefined;
+
+  const codepoint = twemoji.convert.toCodePoint(txt);
+  const fileurl = `https://twemoji.maxcdn.com/v/latest/svg/${codepoint}.svg`;
+
+  const cachepath = `dist/.twemoji/${codepoint}.svg`;
+  let exists: boolean;
+  try {
+    fs.accessSync(cachepath, fsc.R_OK);
+    exists = true;
+  } catch {
+    exists = false;
+
+    const opts = { recursive: true };
+    fs.mkdirSync("dist/.twemoji", opts);
+  }
+
+  let svg: string;
+  if (exists) {
+    svg = fs.readFileSync(cachepath, FS_OPTS);
+  } else {
+    const response = fetchSync(fileurl);
+    if (response.status !== 200) {
+      throw new Error("failed to fetch svg of twemoji");
+    }
+
+    svg = response.text();
+
+    fsp.writeFile(cachepath, svg, FS_OPTS);
+  }
+
+  const element = htmlparser.parse(svg);
+
+  const optsentries = Object.entries(opts);
+  const stroptsentries = optsentries
+    .filter(([_, val]) => val !== undefined)
+    .map(([key, val]) => [key, String(val)]);
+  const stropts = Object.fromEntries(stroptsentries);
+
+  const holdattrs = (element.firstChild as HTMLElement).attributes;
+  const attrs = {
+    ...SVG_ATTRIBUTES,
+    ...stropts,
+    width: "1.2em",
+    height: "1.2em",
+    class: "mr-[.05em] ml-[.1em] align-[-.2em] inline",
+    ...holdattrs,
+  };
+  (element.firstChild as HTMLElement).setAttributes(attrs);
+  svg = element.toString();
+
+  return svg;
+};
+
+const filterIconify = (txt: string, opts: Record<string, unknown>) => {
+  opts["filename"] = undefined;
+
+  const inputs = txt.split(/\s+/);
+  if (inputs.length !== 2) {
+    return;
+  }
+  const [set, name] = inputs;
+
+  const setpath = iconify.json.locate(set);
+  const setjson = fs.readFileSync(setpath).toString();
+  const setdata = JSON.parse(setjson);
+  const icon = iconify.utils.getIconData(setdata, name, false);
+  if (icon === null) {
+    return;
+  }
+
+  const content = htmlparser.parse(icon.body);
+  const element = htmlparser.parse("<svg></svg>");
+
+  const optsentries = Object.entries(opts);
+  const stroptsentries = optsentries
+    .filter(([_, val]) => val !== undefined)
+    .map(([key, val]) => [key, String(val)]);
+  const stropts = Object.fromEntries(stroptsentries);
+
+  const attrs = Object.assign(SVG_ATTRIBUTES, stropts);
+
+  (element.firstChild as HTMLElement).setAttributes(attrs);
+  (element.firstChild as HTMLElement).appendChild(content);
+
+  const svg = element.toString();
+
+  return svg;
+};
+
 const filters = {
-  twemoji: (txt: string, opts: Record<string, unknown>) => {
-    opts["filename"] = undefined;
-
-    const codepoint = twemoji.convert.toCodePoint(txt);
-    const fileurl = `https://twemoji.maxcdn.com/v/latest/svg/${codepoint}.svg`;
-
-    const cachepath = `dist/.twemoji/${codepoint}.svg`;
-    let exists: boolean;
-    try {
-      fs.accessSync(cachepath, fsc.R_OK);
-      exists = true;
-    } catch {
-      exists = false;
-
-      const opts = { recursive: true };
-      fs.mkdirSync("dist/.twemoji", opts);
-    }
-
-    let svg: string;
-    if (exists) {
-      svg = fs.readFileSync(cachepath, FS_OPTS);
-    } else {
-      const response = fetchSync(fileurl);
-      if (response.status !== 200) {
-        throw new Error("failed to fetch svg of twemoji");
-      }
-
-      svg = response.text();
-
-      fsp.writeFile(cachepath, svg, FS_OPTS);
-    }
-
-    const element = htmlparser.parse(svg);
-
-    const optsentries = Object.entries(opts);
-    const stroptsentries = optsentries
-      .filter(([_, val]) => val !== undefined)
-      .map(([key, val]) => [key, String(val)]);
-    const stropts = Object.fromEntries(stroptsentries);
-
-    const holdattrs = (element.firstChild as HTMLElement).attributes;
-    const attrs = {
-      ...SVG_ATTRIBUTES,
-      ...stropts,
-      width: "1.2em",
-      height: "1.2em",
-      class: "mr-[.05em] ml-[.1em] align-[-.2em] inline",
-      ...holdattrs,
-    };
-    (element.firstChild as HTMLElement).setAttributes(attrs);
-    svg = element.toString();
-
-    return svg;
-  },
-
-  iconify: (txt: string, opts: Record<string, unknown>) => {
-    opts["filename"] = undefined;
-
-    const inputs = txt.split(/\s+/);
-    if (inputs.length !== 2) {
-      return;
-    }
-    const [set, name] = inputs;
-
-    const setpath = iconify.json.locate(set);
-    const setjson = fs.readFileSync(setpath).toString();
-    const setdata = JSON.parse(setjson);
-    const icon = iconify.utils.getIconData(setdata, name, false);
-    if (icon === null) {
-      return;
-    }
-
-    const content = htmlparser.parse(icon.body);
-    const element = htmlparser.parse("<svg></svg>");
-
-    const optsentries = Object.entries(opts);
-    const stroptsentries = optsentries
-      .filter(([_, val]) => val !== undefined)
-      .map(([key, val]) => [key, String(val)]);
-    const stropts = Object.fromEntries(stroptsentries);
-
-    const attrs = Object.assign(SVG_ATTRIBUTES, stropts);
-
-    (element.firstChild as HTMLElement).setAttributes(attrs);
-    (element.firstChild as HTMLElement).appendChild(content);
-
-    const svg = element.toString();
-
-    return svg;
-  },
+  twemoji: filterTwemoji,
+  iconify: filterIconify,
 };
 
 const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
