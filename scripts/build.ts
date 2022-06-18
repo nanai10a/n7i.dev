@@ -5,7 +5,7 @@ import type { HTMLElement } from "node-html-parser";
 import child_process from "node:child_process";
 import esbuild from "esbuild";
 import fsp from "node:fs/promises";
-import fs, { constants as fsc } from "node:fs";
+import { constants as fsc } from "node:fs";
 import path from "node:path";
 import pug from "pug";
 import cssnano from "cssnano";
@@ -86,7 +86,7 @@ const buildPug = async (filepath: Path, locals: Locals) => {
 
 type Locals = Partial<{ __tailwindcss__: string }>;
 
-const filterTwemoji = (txt: string, opts: Record<string, unknown>) => {
+const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   opts["filename"] = undefined;
 
   const codepoint = twemoji.convert.toCodePoint(txt);
@@ -95,18 +95,18 @@ const filterTwemoji = (txt: string, opts: Record<string, unknown>) => {
   const cachepath = `dist/.twemoji/${codepoint}.svg`;
   let exists: boolean;
   try {
-    fs.accessSync(cachepath, fsc.R_OK);
+    await fsp.access(cachepath, fsc.R_OK);
     exists = true;
   } catch {
     exists = false;
 
     const opts = { recursive: true };
-    fs.mkdirSync("dist/.twemoji", opts);
+    await fsp.mkdir("dist/.twemoji", opts);
   }
 
   let svg: string;
   if (exists) {
-    svg = fs.readFileSync(cachepath, FS_OPTS);
+    svg = await fsp.readFile(cachepath, FS_OPTS);
   } else {
     const response = fetchSync(fileurl);
     if (response.status !== 200) {
@@ -141,7 +141,7 @@ const filterTwemoji = (txt: string, opts: Record<string, unknown>) => {
   return svg;
 };
 
-const filterIconify = (txt: string, opts: Record<string, unknown>) => {
+const filterIconify = async (txt: string, opts: Record<string, unknown>) => {
   opts["filename"] = undefined;
 
   const inputs = txt.split(/\s+/);
@@ -151,7 +151,7 @@ const filterIconify = (txt: string, opts: Record<string, unknown>) => {
   const [set, name] = inputs;
 
   const setpath = iconify.json.locate(set);
-  const setjson = fs.readFileSync(setpath).toString();
+  const setjson = (await fsp.readFile(setpath)).toString();
   const setdata = JSON.parse(setjson);
   const icon = iconify.utils.getIconData(setdata, name, false);
   if (icon === null) {
