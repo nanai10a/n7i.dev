@@ -1,8 +1,11 @@
 /* eslint-env node, es2022 */
 
+import type { HTMLElement } from "node-html-parser";
+
 import child_process from "node:child_process";
 import esbuild from "esbuild";
 import fsp from "node:fs/promises";
+import fs, { constants as fsc } from "node:fs";
 import path from "node:path";
 import pug from "pug";
 import cssnano from "cssnano";
@@ -10,12 +13,29 @@ import postcss from "postcss";
 import chokidar from "chokidar";
 import crypto from "node:crypto";
 import posthtml from "posthtml";
+import twemoji from "twemoji";
+import * as htmlparser from "node-html-parser";
+import * as iconify_json from "@iconify/json";
+import * as iconify_utils from "@iconify/utils";
+const iconify = { json: iconify_json, utils: iconify_utils };
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
 const htmlnano = require("htmlnano");
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
+const fetchSync = require("sync-fetch");
+
 const MAIN_CSS_FILEPATH = "styles/main.css";
 const FS_OPTS = { encoding: "utf-8" as const };
+const SVG_ATTRIBUTES = {
+  xmlns: "http://www.w3.org/2000/svg",
+  "aria-hidden": "true",
+  role: "img",
+  width: "1em",
+  height: "1em",
+  preserveAspectRatio: "xMidYMid meet",
+  viewBox: "0 0 24 24",
+};
 
 const watch = async () => {
   const boot = await watchFiles();
@@ -68,12 +88,88 @@ const buildPug = async (filepath: Path, locals: Locals) => {
 type Locals = Partial<{ __tailwindcss__: string }>;
 
 const filters = {
-  twemoji: () => {
-    throw new Error("unimplemented.");
+  twemoji: (txt: string, opts: Record<string, unknown>) => {
+    opts["filename"] = undefined;
+
+    const codepoint = twemoji.convert.toCodePoint(txt);
+    const fileurl = `https://twemoji.maxcdn.com/v/latest/svg/${codepoint}.svg`;
+
+    const cachepath = `dist/.twemoji/${codepoint}.svg`;
+    let exists: boolean;
+    try {
+      fs.accessSync(cachepath, fsc.R_OK);
+      exists = true;
+    } catch {
+      exists = false;
+
+      const opts = { recursive: true };
+      fs.mkdirSync("dist/.twemoji", opts);
+    }
+
+    let svg: string;
+    if (exists) {
+      svg = fs.readFileSync(cachepath, FS_OPTS);
+    } else {
+      const response = fetchSync(fileurl);
+      if (response.status !== 200) {
+        throw new Error("failed to fetch svg of twemoji");
+      }
+
+      svg = response.text();
+
+      fsp.writeFile(cachepath, svg, FS_OPTS);
+    }
+
+    const element = htmlparser.parse(svg);
+
+    const optsentries = Object.entries(opts);
+    const stroptsentries = optsentries
+      .filter(([_, val]) => val !== undefined)
+      .map(([key, val]) => [key, String(val)]);
+    const stropts = Object.fromEntries(stroptsentries);
+    const attrs = Object.assign(SVG_ATTRIBUTES, stropts);
+    // attrs["class"] = "h-[1.2em] w-[1.2em] mr-[.05em] ml-[.1em] align-[-.2em] inline";
+
+    (element.firstChild as HTMLElement).setAttributes(attrs);
+    svg = element.toString();
+
+    return svg;
   },
 
-  iconify: () => {
-    throw new Error("unimplemented.");
+  iconify: (txt: string, opts: Record<string, unknown>) => {
+    opts["filename"] = undefined;
+
+    const inputs = txt.split(/\s+/);
+    if (inputs.length !== 2) {
+      return;
+    }
+    const [set, name] = inputs;
+
+    const setpath = iconify.json.locate(set);
+    const setjson = fs.readFileSync(setpath).toString();
+    const setdata = JSON.parse(setjson);
+    const icon = iconify.utils.getIconData(setdata, name, false);
+    if (icon === null) {
+      return;
+    }
+
+    const content = htmlparser.parse(icon.body);
+    const element = htmlparser.parse("<svg></svg>");
+
+    const optsentries = Object.entries(opts);
+    const stroptsentries = optsentries
+      .filter(([_, val]) => val !== undefined)
+      .map(([key, val]) => [key, String(val)]);
+    const stropts = Object.fromEntries(stroptsentries);
+
+    const attrs = Object.assign(SVG_ATTRIBUTES, stropts);
+
+    (element.firstChild as HTMLElement).setAttributes(attrs);
+    (element.firstChild as HTMLElement).appendChild(content);
+
+    const svg = element.toString();
+
+    return svg;
   },
 };
 
