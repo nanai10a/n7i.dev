@@ -1,14 +1,14 @@
 /* eslint-env node, es2022 */
 
-import child_process from "child_process";
+import child_process from "node:child_process";
 import esbuild from "esbuild";
-import fs from "fs/promises";
-import path from "path";
+import fsp from "node:fs/promises";
+import path from "node:path";
 import pug from "pug";
 import cssnano from "cssnano";
 import postcss from "postcss";
 import chokidar from "chokidar";
-import crypto from "crypto";
+import crypto from "node:crypto";
 import posthtml from "posthtml";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
@@ -26,7 +26,7 @@ const watch = async () => {
       case ".pug": {
         const partialhtml = await buildPug(filepath, {});
 
-        const tailwindcss = await fs.readFile(MAIN_CSS_FILEPATH, FS_OPTS);
+        const tailwindcss = await fsp.readFile(MAIN_CSS_FILEPATH, FS_OPTS);
         const css = await buildTailwindcss(tailwindcss, partialhtml);
         const mincss = await minifyCssnano(css);
 
@@ -34,7 +34,7 @@ const watch = async () => {
         const minhtml = await minifyHtmlnano(html);
 
         const dest = asDist(chExt(filepath, ".html"));
-        await fs.writeFile(dest, minhtml, FS_OPTS);
+        await fsp.writeFile(dest, minhtml, FS_OPTS);
 
         console.log(`✅ built html => ${dest}`);
 
@@ -86,8 +86,8 @@ const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
   const htmlfile: Path = path.join(tmpdir, "in.html");
   const outcssfile: Path = path.join(tmpdir, "out.css");
 
-  const writingcss = fs.writeFile(cssfile, src, FS_OPTS);
-  const writinghtml = fs.writeFile(htmlfile, content, FS_OPTS);
+  const writingcss = fsp.writeFile(cssfile, src, FS_OPTS);
+  const writinghtml = fsp.writeFile(htmlfile, content, FS_OPTS);
   await Promise.all([writingcss, writinghtml]);
 
   const spawned = child_process.spawn(toBin("tailwindcss"), [
@@ -105,9 +105,9 @@ const buildTailwindcss = async (src: Code, content: Code): Promise<Code> => {
     spawned.once("error", (err) => reject(err));
   });
 
-  const css = await fs.readFile(outcssfile, FS_OPTS);
+  const css = await fsp.readFile(outcssfile, FS_OPTS);
 
-  fs.rm(tmpdir, { recursive: true });
+  fsp.rm(tmpdir, { recursive: true });
   return css;
 };
 
@@ -179,7 +179,7 @@ const genTmpdir = async (): Promise<Path> => {
   const uuid = crypto.randomUUID();
   const tmpdir = path.join("dist", ".tmp", uuid);
 
-  await fs.mkdir(tmpdir, { recursive: true });
+  await fsp.mkdir(tmpdir, { recursive: true });
 
   return tmpdir;
 };
