@@ -4,6 +4,7 @@ specifiers:
   '@iconify/json': ^2.1.63
   '@iconify/utils': ^1.0.33
   '@prettier/plugin-pug': ^2.1.0
+  '@tsconfig/node16-strictest-esm': ^1.0.2
   '@types/node': ^18.0.0
   '@types/pug': ^2.0.6
   '@typescript-eslint/eslint-plugin': ^5.28.0
@@ -42,6 +43,7 @@ dependencies:
 
 devDependencies:
   '@prettier/plugin-pug': 2.1.0_prettier@2.6.2
+  '@tsconfig/node16-strictest-esm': 1.0.2
   '@types/node': 18.0.0
   '@types/pug': 2.0.6
   '@typescript-eslint/eslint-plugin': 5.28.0_7yumg2qjgbp7maccqlfhx2vudu
@@ -269,6 +271,10 @@ packages:
 
   /@tsconfig/node14/1.0.3:
     resolution: {integrity: sha512-ysT8mhdixWK6Hw3i1V2AeRqZ5WfXg1G43mqoYlM2nc6388Fq5jcXyr5mRsqViLx/GJYdoL0bfXD8nmF+Zn/Iow==}
+
+  /@tsconfig/node16-strictest-esm/1.0.2:
+    resolution: {integrity: sha512-rzPPLuRSKnnsfmLkKHoqNlC+glSQT8oB+sSbYtvrctDcSLTWMoMrD31y9oFpk9sip4ONjrRuU7tBWhlPbPK4sQ==}
+    dev: true
 
   /@tsconfig/node16/1.0.3:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
