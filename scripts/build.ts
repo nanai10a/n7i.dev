@@ -100,7 +100,6 @@ const filterTwemoji = async (char: string, attrs: Record<string, unknown>) => {
   const codepoint = twemoji.convert.toCodePoint(char);
   const filename = `${codepoint}.svg`;
   const fileurl = new URL(filename, TWEMOJI_BASE_URL);
-  const cachepath = path.join(twemojicachedir, filename);
 
   const cachepath = `dist/.twemoji/${codepoint}.svg`;
   let exists: boolean;
