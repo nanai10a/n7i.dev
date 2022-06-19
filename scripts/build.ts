@@ -22,9 +22,6 @@ const iconify = { json: iconify_json, utils: iconify_utils };
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
 const htmlnano = require("htmlnano");
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
-const fetchSync = require("sync-fetch");
-
 const MAIN_CSS_FILEPATH = "styles/main.css";
 const FS_OPTS = { encoding: "utf-8" as const };
 const SVG_ATTRIBUTES = {
@@ -108,12 +105,14 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   if (exists) {
     svg = await fsp.readFile(cachepath, FS_OPTS);
   } else {
-    const response = fetchSync(fileurl);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- cannot recognize fetch api
+    // @ts-ignore
+    const response = await fetch(fileurl);
     if (response.status !== 200) {
       throw new Error("failed to fetch svg of twemoji");
     }
 
-    svg = response.text();
+    svg = await response.text();
 
     // Tips: doesn't need await this: do caching
     fsp.writeFile(cachepath, svg, FS_OPTS);
