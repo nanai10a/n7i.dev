@@ -94,10 +94,8 @@ type Locals = {
   };
 };
 
-const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
-  opts["filename"] = undefined;
-
-  const codepoint = twemoji.convert.toCodePoint(txt);
+const filterTwemoji = async (char: string, attrs: Record<string, unknown>) => {
+  const codepoint = twemoji.convert.toCodePoint(char);
   const filename = `${codepoint}.svg`;
   const fileurl = new URL(filename, TWEMOJI_BASE_URL);
   const cachepath = path.join(twemojicachedir, filename);
@@ -133,22 +131,17 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
 
   const element = htmlparser.parse(svg);
 
-  const optsentries = Object.entries(opts);
-  const stroptsentries = optsentries
-    .filter(([_, val]) => val !== undefined)
-    .map(([key, val]) => [key, String(val)]);
-  const stropts = Object.fromEntries(stroptsentries);
-
+  const strattrs = mapObjectAsString(attrs);
   const holdattrs = (element.firstChild as HTMLElement).attributes;
-  const attrs = {
+  const passattrs = {
     ...SVG_ATTRIBUTES,
-    ...stropts,
+    ...strattrs,
+    ...holdattrs,
     width: "1.2em",
     height: "1.2em",
     class: "mr-[.05em] ml-[.1em] align-[-.2em] inline",
-    ...holdattrs,
   };
-  (element.firstChild as HTMLElement).setAttributes(attrs);
+  (element.firstChild as HTMLElement).setAttributes(passattrs);
   svg = element.toString();
 
   console.log("⤵️ inject(twemoji)");
@@ -156,15 +149,7 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   return svg;
 };
 
-const filterIconify = async (txt: string, opts: Record<string, unknown>) => {
-  opts["filename"] = undefined;
-
-  const inputs = txt.split(/\s+/);
-  if (inputs.length !== 2) {
-    return;
-  }
-  const [set, name] = inputs;
-
+const filterIconify = async (set: string, name: string, attrs: Record<string, unknown>) => {
   const setpath = iconify.json.locate(set);
   // replace for cache:
   // const setdata = await import(setpath);
@@ -179,15 +164,10 @@ const filterIconify = async (txt: string, opts: Record<string, unknown>) => {
   const content = htmlparser.parse(icon.body);
   const element = htmlparser.parse("<svg></svg>");
 
-  const optsentries = Object.entries(opts);
-  const stroptsentries = optsentries
-    .filter(([_, val]) => val !== undefined)
-    .map(([key, val]) => [key, String(val)]);
-  const stropts = Object.fromEntries(stroptsentries);
+  const strattrs = mapObjectAsString(attrs);
+  const passattrs = Object.assign(SVG_ATTRIBUTES, strattrs);
 
-  const attrs = Object.assign(SVG_ATTRIBUTES, stropts);
-
-  (element.firstChild as HTMLElement).setAttributes(attrs);
+  (element.firstChild as HTMLElement).setAttributes(passattrs);
   (element.firstChild as HTMLElement).appendChild(content);
 
   const svg = element.toString();
