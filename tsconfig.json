@@ -11,5 +11,9 @@
 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
+  },
+
+  "ts-node": {
+    "swc": true
   }
 }
