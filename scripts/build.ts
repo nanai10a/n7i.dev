@@ -43,13 +43,17 @@ const watch = async () => {
 
     switch (getExt(filepath)) {
       case ".pug": {
-        const partialhtml = await buildPug(filepath, {});
+        const partialhtml = await buildPug(filepath, {
+          __injected__: { tailwindcss: "", twemoji: () => "", iconify: () => "" },
+        });
 
         const tailwindcss = await fsp.readFile(MAIN_CSS_FILEPATH, FS_OPTS);
         const css = await buildTailwindcss(tailwindcss, partialhtml);
         const mincss = await minifyCssnano(css);
 
-        const html = await buildPug(filepath, { __tailwindcss__: mincss });
+        const html = await buildPug(filepath, {
+          __injected__: { tailwindcss: mincss, twemoji: () => "", iconify: () => "" },
+        });
         const minhtml = await minifyHtmlnano(html);
 
         const dest = asDist(chExt(filepath, ".html"));
@@ -77,13 +81,18 @@ const buildPug = async (filepath: Path, locals: Locals) => {
   };
   const template = pug.compileFile(filepath, opts);
 
-  locals = { __tailwindcss__: "", ...locals };
   const html = template(locals);
 
   return html;
 };
 
-type Locals = Partial<{ __tailwindcss__: string }>;
+type Locals = {
+  __injected__: {
+    tailwindcss: string;
+    twemoji: (_char: string, _attrs: Record<string, string>) => string;
+    iconify: (_set: string, _name: string, _attrs: Record<string, string>) => string;
+  };
+};
 
 const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   opts["filename"] = undefined;
