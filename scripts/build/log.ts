@@ -1,3 +1,5 @@
+/* eslint-env node, es2022 */
+
 import pino from "pino";
 import pino_pretty from "pino-pretty";
 
