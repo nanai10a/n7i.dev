@@ -133,6 +133,8 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   (element.firstChild as HTMLElement).setAttributes(attrs);
   svg = element.toString();
 
+  console.log("⤵️ inject(twemoji)");
+
   return svg;
 };
 
@@ -168,6 +170,8 @@ const filterIconify = async (txt: string, opts: Record<string, unknown>) => {
   (element.firstChild as HTMLElement).appendChild(content);
 
   const svg = element.toString();
+
+  console.log("⤵️ inject(iconify)");
 
   return svg;
 };
@@ -247,6 +251,8 @@ const minifyCssnano = async (src: Code): Promise<Code> => {
 };
 
 const watchFiles = async () => (listener: (_: Path) => unknown) => {
+  console.log("🚧 booting chokidar");
+
   const watcher = chokidar.watch(["mixins", "pages", "scripts", "styles"]);
 
   watcher.on("ready", () => console.log("🧐 watching files"));
@@ -254,6 +260,8 @@ const watchFiles = async () => (listener: (_: Path) => unknown) => {
 };
 
 const isFileExists = async (filepath: Path) => {
+  console.log(`🤨 checking to availability(${fsc.R_OK}) of file(${filepath})`);
+
   let isexists: boolean;
   try {
     await fsp.access(filepath, fsc.R_OK);
@@ -266,6 +274,8 @@ const isFileExists = async (filepath: Path) => {
 };
 
 const makeTwemojiCacheDir = async () => {
+  console.log("🗃️ make cache dir for twemoji");
+
   const opts = { recursive: true };
   await fsp.mkdir(twemojicachedir, opts);
 };
@@ -292,6 +302,8 @@ const asDist = (src: Path): Path => {
 };
 
 const genTmpdir = async (): Promise<Path> => {
+  console.log("🗃️ make temporary dir");
+
   const uuid = crypto.randomUUID();
   const tmpdir = path.join("dist", ".tmp", uuid);
 
