@@ -310,6 +310,26 @@ const genTmpdir = async (): Promise<Path> => {
   return tmpdir;
 };
 
+const mapObjectAsString = (obj: Record<string, unknown>): Record<string, string> => {
+  const entries = Object.entries(obj);
+  const mapped = entries.map(([key, val]) => {
+    let strval: string;
+
+    if (typeof val === "string") {
+      strval = val;
+    } else if (typeof val === "object" && "toString" in val) {
+      strval = val.toString();
+    } else {
+      strval = String(val);
+    }
+
+    return [key, strval];
+  });
+  const restructed = Object.fromEntries(mapped);
+
+  return restructed;
+};
+
 // --- --- --- --- --- --- --- --- ---
 
 console.log(`💨 cwd => ${process.cwd()}`);
