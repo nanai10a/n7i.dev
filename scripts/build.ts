@@ -118,7 +118,7 @@ const filterTwemoji = async (char: string, attrs: Record<string, unknown>) => {
   if (exists) {
     svg = await fsp.readFile(cachepath, FS_OPTS);
   } else {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- cannot recognize fetch api
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- typescript cannot recognize node fetch api
     // @ts-ignore
     const response = await fetch(fileurl);
     if (response.status !== 200) {
