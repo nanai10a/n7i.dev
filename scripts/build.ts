@@ -148,6 +148,8 @@ const filterIconify = async (txt: string, opts: Record<string, unknown>) => {
   const [set, name] = inputs;
 
   const setpath = iconify.json.locate(set);
+  // replace for cache:
+  // const setdata = await import(setpath);
   const setjson = (await fsp.readFile(setpath)).toString();
   const setdata = JSON.parse(setjson);
   const icon = iconify.utils.getIconData(setdata, name, false);
