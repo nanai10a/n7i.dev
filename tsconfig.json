@@ -1,0 +1,15 @@
+{
+  "extends": "@tsconfig/node16-strictest-esm/tsconfig.json",
+
+  "compilerOptions": {
+    "noImplicitThis": true,
+    "strictPropertyInitialization": true,
+
+    "importHelpers": true,
+
+    "allowJs": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
