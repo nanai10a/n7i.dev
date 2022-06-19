@@ -161,7 +161,7 @@ const filterIconify = async (set: string, name: string, attrs: Record<string, un
 
   const icon = iconify.utils.getIconData(setdata, name, false);
   if (icon === null) {
-    return;
+    return "";
   }
 
   const content = htmlparser.parse(icon.body);
