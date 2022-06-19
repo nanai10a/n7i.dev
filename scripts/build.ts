@@ -90,21 +90,13 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   const fileurl = `https://twemoji.maxcdn.com/v/latest/svg/${codepoint}.svg`;
 
   const cachepath = `dist/.twemoji/${codepoint}.svg`;
-  let exists: boolean;
-  try {
-    await fsp.access(cachepath, fsc.R_OK);
-    exists = true;
-  } catch {
-    exists = false;
-
-    const opts = { recursive: true };
-    await fsp.mkdir("dist/.twemoji", opts);
-  }
+  const exists = await isFileExists(cachepath);
 
   let svg: string;
   if (exists) {
     svg = await fsp.readFile(cachepath, FS_OPTS);
   } else {
+    await makeTwemojiCacheDir();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- cannot recognize fetch api
     // @ts-ignore
     const response = await fetch(fileurl);
@@ -257,6 +249,25 @@ const watchFiles = async () => (listener: (_: Path) => unknown) => {
   watcher.on("ready", () => console.log("🧐 watching files"));
   watcher.on("change", listener);
 };
+
+const isFileExists = async (filepath: Path) => {
+  let isexists: boolean;
+  try {
+    await fsp.access(filepath, fsc.R_OK);
+    isexists = true;
+  } catch {
+    isexists = false;
+  }
+
+  return isexists;
+};
+
+const makeTwemojiCacheDir = async () => {
+  const opts = { recursive: true };
+  await fsp.mkdir(twemojicachedir, opts);
+};
+
+const twemojicachedir = "dist/.twemoji";
 
 type Path = string;
 type Extension = string;
