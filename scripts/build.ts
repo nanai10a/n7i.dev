@@ -18,6 +18,7 @@ import * as htmlparser from "node-html-parser";
 import * as iconify_json from "@iconify/json";
 import * as iconify_utils from "@iconify/utils";
 const iconify = { json: iconify_json, utils: iconify_utils };
+import { URL } from "node:url";
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires -- doesn't exists type definitions
 const htmlnano = require("htmlnano");
@@ -33,6 +34,7 @@ const SVG_ATTRIBUTES = {
   preserveAspectRatio: "xMidYMid meet",
   viewBox: "0 0 24 24",
 };
+const TWEMOJI_BASE_URL = "https://twemoji.maxcdn.com/v/latest/svg/";
 
 const watch = async () => {
   const boot = await watchFiles();
@@ -87,9 +89,10 @@ const filterTwemoji = async (txt: string, opts: Record<string, unknown>) => {
   opts["filename"] = undefined;
 
   const codepoint = twemoji.convert.toCodePoint(txt);
-  const fileurl = `https://twemoji.maxcdn.com/v/latest/svg/${codepoint}.svg`;
+  const filename = `${codepoint}.svg`;
+  const fileurl = new URL(filename, TWEMOJI_BASE_URL);
+  const cachepath = path.join(twemojicachedir, filename);
 
-  const cachepath = `dist/.twemoji/${codepoint}.svg`;
   const exists = await isFileExists(cachepath);
 
   let svg: string;
