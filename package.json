@@ -25,6 +25,8 @@
   },
   "devDependencies": {
     "@prettier/plugin-pug": "^2.1.0",
+    "@swc/core": "^1.2.204",
+    "@swc/helpers": "^0.4.2",
     "@tsconfig/node16-strictest-esm": "^1.0.2",
     "@types/node": "^18.0.0",
     "@types/pug": "^2.0.6",
