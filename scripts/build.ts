@@ -95,6 +95,8 @@ type Locals = {
 };
 
 const filterTwemoji = async (char: string, attrs: Record<string, unknown>) => {
+  console.log("⚗️ try injection(twemoji)");
+
   const codepoint = twemoji.convert.toCodePoint(char);
   const filename = `${codepoint}.svg`;
   const fileurl = new URL(filename, TWEMOJI_BASE_URL);
@@ -150,6 +152,8 @@ const filterTwemoji = async (char: string, attrs: Record<string, unknown>) => {
 };
 
 const filterIconify = async (set: string, name: string, attrs: Record<string, unknown>) => {
+  console.log("⚗️ try injection(iconify)");
+
   const setpath = iconify.json.locate(set);
   // replace for cache:
   // const setdata = await import(setpath);
