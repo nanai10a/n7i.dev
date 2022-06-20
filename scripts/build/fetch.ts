@@ -1,6 +1,7 @@
 /* eslint-env node, es2022 */
 
 import { isMainThread } from "node:worker_threads";
+
 import synckit from "synckit";
 
 // minimal declarations of fetch api in node (from browser)
