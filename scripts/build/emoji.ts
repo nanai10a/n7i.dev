@@ -9,6 +9,7 @@ import twemoji from "twemoji";
 
 import * as fs from "./fs";
 import fetch from "./fetch";
+import * as html from "./html";
 
 // converts between codepoint and raw emoji
 const CODE_POINT_SEPARATER = "-";
@@ -39,14 +40,17 @@ export const toSVG = (char: string): string => {
     fs.mkdir(CACHE_DIRECTORY_PATH);
   }
 
-  let svg: string;
+  let raw: string;
   if (fs.availability(cachePath)) {
-    svg = fs.read(cachePath);
+    raw = fs.read(cachePath);
   } else {
     const url = urlFromCodePoint(codePoint);
-    svg = fetch(url);
-    fs.write(cachePath, svg);
+    raw = fetch(url);
+    fs.write(cachePath, raw);
   }
+
+  const { content, attrs } = html.destructElement(raw);
+  const svg = html.makeSVG(content, attrs);
 
   return svg;
 };
