@@ -41,6 +41,8 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 
 ## roadmap
 
+- [ ] **v0.9**
+  - [ ] integrate with [umami](https://umami.is)
 - [ ] **v0.8**
   - [ ] add breadcrumbs
 - [ ] **v0.7**
