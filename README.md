@@ -53,24 +53,15 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
 - [ ] **v0.6**
   - [ ] implements menubar from `/` page
 - [ ] **v0.5**
-  - [x] migrate as twemoji
-    - [x] replace raw emoji as svg image
-  - [ ] construct incremental build system
-    - [ ] separate css to each html
-    - [ ] construct fs watcher
-  - [ ] improve systems
-    - [ ] separate datas as other files
-    - [ ] as embed assets
-      - [ ] local css
-      - [ ] local js
-      - [ ] iconify
-      - [ ] twemoji
-  - [ ] improve local server
-    - [ ] make custom server
-    - [ ] for dev
-      - [ ] hot reloadable
-    - [ ] for production
-      - [ ] serve static file fastly
+  - [ ] migrate node to deno
+    - [ ] initial deno project
+    - [ ] migrate node tasks
+    - [ ] migrate node actions
+  - [ ] replace systems
+    - [ ] [kt3k/packup](https://github.com/kt3k/packup)
+    - [ ] [lumeland/pug](https://github.com/lumeland/pug)
+    - [ ] [tw-in-js/twind](https://github.com/tw-in-js/twind)
+    - [ ] [iconify (web component)](https://docs.iconify.design/iconify-icon)
 - [x] **v0.4**
   - [x] styling `<a />`
 - [x] **v0.3**
