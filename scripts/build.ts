@@ -247,9 +247,7 @@ const minifyCssnano = async (src: Code): Promise<Code> => {
   const opts = {
     preset: "advanced",
   };
-  const { css } = await postcss(cssnano(opts)).process(src, {
-    from: undefined,
-  });
+  const { css } = await postcss(cssnano(opts)).process(src, {});
 
   return css;
 };
@@ -300,7 +298,7 @@ const mapObjectAsString = (obj: Record<string, unknown>): Record<string, string>
 
     if (typeof val === "string") {
       strval = val;
-    } else if (typeof val === "object" && "toString" in val) {
+    } else if (val !== null && typeof val === "object" && "toString" in val) {
       strval = val.toString();
     } else {
       strval = String(val);
