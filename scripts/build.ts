@@ -65,7 +65,8 @@ const main = async () => {
   const writings = paths
     .map((path, idx) => [Deno.writeTextFile(path, strs[idx]), path] as const)
     .filter(([_, path]) => deps.std.path.parse(path).ext === ".html")
-    .map(([pm, path]) => pm.then(() => path));
+    .map(([pm, path]) => pm.then(() => path))
+    .map(async (path) => deps.std.path.normalize(await path));
 
   const wrotes = await Promise.all(writings);
   const code = await deps.packup.cli.main(["build", ...wrotes]);
