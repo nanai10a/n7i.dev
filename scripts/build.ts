@@ -11,12 +11,7 @@ const TWIND_CFG = {
   presets: [deps.twind.preset.autoprefix(), deps.twind.preset.tailwind()],
 };
 
-const main = async (...args: Array<string>) => {
-  if (args.length !== 0) {
-    console.error("don't accept any arguments.");
-    return 1;
-  }
-
+const main = async () => {
   const glob = new deps.glob.Glob(SOURCE_FILES, { sync: true });
   const expand = glob.found;
 
@@ -119,5 +114,5 @@ const mkDistDir = async () => {
 };
 
 if (import.meta.main) {
-  Deno.exit(await main(...Deno.args.slice(0)));
+  Deno.exit(await main());
 }
