@@ -26,7 +26,7 @@ jobs:
             ~/.cache/deno
           key: ${{ runner.os }}-deno-${{ hashFiles('**/lock.json') }}
 
-      - name: pre-download dependencies
+      - name: pre-download and validate dependencies
         run: deno task cache:r
 
       - name: check lint
