@@ -55,12 +55,20 @@ const main = async () => {
     // assert that's html
     .filter(([_, path]) => deps.std.path.parse(path).ext === ".html")
     // => [void, packup promise]
-    .map(async ([pm, path]) => [
-      await pm,
-      await deps.packup.cli.main(["build", path]),
-    ]);
+    .map(
+      async ([pm, path]) =>
+        [await pm, await deps.packup.cli.main(["build", path])] as const
+    );
 
-  await Promise.all(building);
+  const result = { success: 0, failed: 0 };
+  for await (const [_, code] of building) {
+    code === 0 ? result.success++ : result.failed++;
+  }
+
+  console.log("\n--- --- --- --- --- --- --- --- ---\n");
+  console.log(`packup: success - ${result.success}, failed - ${result.failed}`);
+
+  return Number(result.failed !== 0);
 };
 
 const asDist = (path: string, ext: string): string => {
