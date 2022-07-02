@@ -13,7 +13,7 @@ const main = async () => {
 
   const tw = deps.twind.setup(TWIND_CFG);
 
-  const prepares = expand
+  const preparings = expand
     // => [source path, rendered result]
     .map((path) => [path, deps.pug.renderFile(path)] as const)
     // assert that's string
@@ -47,25 +47,34 @@ const main = async () => {
 
   await mkDistDir();
 
-  const building = (await Promise.all(prepares))
+  const [paths, strs] = (await Promise.all(preparings))
     // => [dest path, write data] (flatten)
     .flat()
+    // => [(dest path)[], (write data)[]]
+    .reduce(
+      ([paths, strs], [path, str]) =>
+        [
+          [...paths, path],
+          [...strs, str],
+        ] as const,
+      [[], []] as readonly [readonly string[], readonly string[]]
+    );
+
+  const buildings = paths
     // => [writing promsise, dest path]
-    .map(([path, str]) => [Deno.writeTextFile(path, str), path] as const)
+    .map((path, idx) => [Deno.writeTextFile(path, strs[idx]), path] as const)
     // assert that's html
     .filter(([_, path]) => deps.std.path.parse(path).ext === ".html")
     // => [void, packup promise]
-    .map(
-      async ([pm, path]) =>
-        [await pm, await deps.packup.cli.main(["build", path])] as const
-    );
+    .map(([pm, path]) => pm.then(() => deps.packup.cli.main(["build", path])));
 
   const result = { success: 0, failed: 0 };
-  for await (const [_, code] of building) {
+  for await (const code of buildings) {
     code === 0 ? result.success++ : result.failed++;
   }
 
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
+
   console.log(`packup: success - ${result.success}, failed - ${result.failed}`);
 
   return Number(result.failed !== 0);
