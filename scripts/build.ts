@@ -8,6 +8,8 @@ const TWIND_CFG = {
 };
 
 const main = async () => {
+  console.log("\n--- --- --- --- --- --- --- --- ---\n");
+
   const glob = new deps.glob.Glob(consts.SOURCE_FILES, { sync: true });
   const expand = glob.found;
 
@@ -87,6 +89,9 @@ const main = async () => {
   await walk(consts.DIST_DIR);
 
   const encoder = new TextEncoder();
+
+  await Deno.stderr.write(encoder.encode("compressing..."));
+
   const compressings = builts
     .map((path) => Deno.readTextFile(path))
     .map(async (text) => encoder.encode(await text))
@@ -111,10 +116,10 @@ const main = async () => {
       Deno.writeFile(path, await compressing)
     );
 
-  const files = (await Promise.all([...compressings])).length / 2;
+  const resolved = (await Promise.all([...compressings])).length;
+  console.error("done");
 
-  console.log("\n--- --- --- --- --- --- --- --- ---\n");
-  console.log(`compressed: ${files} files (.br & .gz)`);
+  console.log(`compressed: to ${resolved} files (.br & .gz)`);
 
   return Number(code !== 0);
 };
