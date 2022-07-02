@@ -4,6 +4,7 @@
     "./": "./",
 
     "std/": "https://deno.land/std@v0.146.0/",
+    "oak/": "https://deno.land/x/oak@v10.6.0/",
     "packup/": "https://deno.land/x/packup@v0.1.12/",
 
     "glob/": "https://esm.sh/glob@8.0.3/",
