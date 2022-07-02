@@ -8,12 +8,12 @@
     "clean": "deno task clean:packup",
     "clean:packup": "deno run --allow-write=dist scripts/clean.ts",
     "install": "deno task install:packup",
-    "install:packup": "deno run --allow-env=DENO_DIR --allow-net=deno.land --allow-read=$DENO_DIR/packup --allow-write=$DENO_DIR/packup scripts/install_packup.ts",
+    "install:packup": "deno run --allow-env --allow-net=deno.land --allow-read --allow-write=$DENO_DIR/packup,$HOME/.deno/packup scripts/install_packup.ts",
     "cache:r": "deno task cache",
     "cache:w": "deno task cache --lock-write",
     "cache": "deno cache deps.ts --lock lock.json",
     "lint": "deno lint",
-    "build": "deno run --allow-env=NODE_DEBUG,BABEL_TYPES_8_BREAKING,DENO_DIR --allow-read=.,$DENO_DIR --allow-run=$DENO_INSTALL_ROOT/deno --allow-write=dist scripts/build.ts",
-    "serve": "deno run --allow-env=NODE_DEBUG,BABEL_TYPES_8_BREAKING --allow-net=0.0.0.0 --allow-read=dist scripts/serve.ts"
+    "build": "deno run --allow-env --allow-read --allow-run --allow-write=dist scripts/build.ts",
+    "serve": "deno run --allow-env --allow-net=0.0.0.0 --allow-read scripts/serve.ts"
   }
 }
