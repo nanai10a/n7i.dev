@@ -21,7 +21,7 @@ mixin head(title)
         rel="stylesheet"
       )
 
-      style= __injected__.tailwindcss
+      link(href="__css_href_inject__" rel="stylesheet")
 
     body(
       class="min-h-screen bg-bgl dark:bg-bgd text-on-bgl dark:text-on-bgd font-zen text-xl md:text-2xl xl:text-3xl flex flex-col"
