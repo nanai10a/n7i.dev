@@ -4,5 +4,15 @@
     "checkJs": true
   },
   "importMap": "import_map.json",
-  "tasks": {}
+  "tasks": {
+    "clean": "deno task clean:packup",
+    "clean:packup": "deno run --allow-write=dist scripts/clean.ts",
+    "install": "deno task install:packup",
+    "install:packup": "deno run --allow-env=DENO_DIR --allow-net=deno.land --allow-read=$DENO_DIR/packup --allow-write=$DENO_DIR/packup scripts/install_packup.ts",
+    "cache:r": "deno task cache",
+    "cache:w": "deno task cache --lock-write",
+    "cache": "deno cache deps.ts --lock lock.json",
+    "lint": "deno lint",
+    "build": "deno run --allow-env=NODE_DEBUG,BABEL_TYPES_8_BREAKING --allow-read=. --allow-write=. scripts/build.ts"
+  }
 }
