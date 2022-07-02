@@ -1,0 +1,29 @@
+mixin head(title)
+  doctype html
+  html(lang="en")
+    head
+      meta(charset="utf-8")
+      meta(name="viewport" content="width=device-width")
+      meta(name="colorscheme" content="dark light")
+
+      if title
+        title #{ title } - n7i.dev
+      else
+        title n7i.dev
+
+      meta(name="description" content="site of nanai.")
+      meta(name="author" content="Nanai Jua")
+
+      link(href="https://fonts.googleapis.com" rel="preconnect")
+      link(href="https://fonts.gstatic.com" rel="preconnect" crossorigin)
+      link(
+        href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Zen+Kaku+Gothic+New&display=swap"
+        rel="stylesheet"
+      )
+
+      style= __injected__.tailwindcss
+
+    body(
+      class="min-h-screen bg-bgl dark:bg-bgd text-on-bgl dark:text-on-bgd font-zen text-xl md:text-2xl xl:text-3xl flex flex-col"
+    )
+      block

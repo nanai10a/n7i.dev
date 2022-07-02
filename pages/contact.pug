@@ -1,0 +1,71 @@
+include ../mixins/head.pug
+include ../mixins/header.pug
+include ../mixins/colored.pug
+include ../mixins/basic.pug
+include ../mixins/footer.pug
+
++head("contact")
+  +header
+    span contact
+
+  main
+    ul(class=linkscont)
+      li(class=linkselem)
+        :iconify(class="my-auto mr-3 align-[-0.125em] inline") simple-icons discord
+        | Discord - Nanai10a#4213
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/twitter.com/n7idev")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") simple-icons twitter
+          | Twitter
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/github.com/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") simple-icons github
+          | GitHub
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/keybase.io/nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") simple-icons keybase
+          | Keybase
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/www.reddit.com/user/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") simple-icons reddit
+          | Reddit
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/qiita.com/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-question-answer
+          | Qiita
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/zenn.dev/nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-question-answer
+          | Zenn
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/connpass.com/user/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-event
+          | Connpass
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/speakerdeck.com/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-slideshow
+          | SpeakerDeck
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/atcoder.jp/users/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-emoji-events
+          | AtCoder
+
+      li(class=linkselem title="jump to another site.")
+        a(class=linkmarkp href="https:\/\/lapras.com/public/Nanai10a")
+          :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-info
+          | LAPRAS
+
+      li(class=linkselem)
+        :iconify(class="my-auto mr-3 align-[-0.125em] inline") ic round-email
+        | Email - me@n7i.dev
+
+  +footer

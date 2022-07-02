@@ -1,0 +1,25 @@
+include ../mixins/head.pug
+include ../mixins/header.pug
+include ../mixins/colored.pug
+include ../mixins/basic.pug
+include ../mixins/footer.pug
+
+- const links = { blog: { href: "https://b.n7i.dev", wip: true }, hobby: { href: "https://h.n7i.dev", wip: true } };
+
++head("link")
+  +header
+    span link
+
+  main
+    ul(class=linkscont)
+      each val, key in links
+        li(class=linkselem)
+          if val.wip
+            // prettier-ignore: wasn't recognized interpolation with back quote
+            a(class=`text-errl dark:text-errd ${linkmarke}` href=val.href title="*under construction*")
+              span(class="my-auto mr-3 inline iconify-inline" data-icon="ic:round-error")
+              | #{ key }
+          else
+            a(href=val.href title="jump to another site.")= key
+
+  +footer
