@@ -13,6 +13,7 @@
     "cache:w": "deno task cache --lock-write",
     "cache": "deno cache deps.ts --lock lock.json",
     "lint": "deno lint",
-    "build": "deno run --allow-env=NODE_DEBUG,BABEL_TYPES_8_BREAKING,DENO_DIR --allow-read=.,$DENO_DIR --allow-run=$DENO_INSTALL_ROOT/deno --allow-write=dist scripts/build.ts"
+    "build": "deno run --allow-env=NODE_DEBUG,BABEL_TYPES_8_BREAKING,DENO_DIR --allow-read=.,$DENO_DIR --allow-run=$DENO_INSTALL_ROOT/deno --allow-write=dist scripts/build.ts",
+    "serve": "deno run --allow-env=NODE_DEBUG,BABEL_TYPES_8_BREAKING --allow-net=0.0.0.0 --allow-read=dist scripts/serve.ts"
   }
 }
