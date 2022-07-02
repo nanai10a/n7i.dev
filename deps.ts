@@ -1,3 +1,4 @@
+import * as brotli from "brotli/mod.ts";
 import glob from "glob/glob.js";
 import * as oak from "oak/mod.ts";
 import * as pug from "pug/mod.ts";
@@ -31,4 +32,4 @@ const std = {
   },
 };
 
-export { glob, oak, packup, pug, twind, std };
+export { brotli, glob, oak, packup, pug, twind, std };
