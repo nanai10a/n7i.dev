@@ -109,6 +109,4 @@ const mkDistDir = async () => {
   }
 };
 
-if (import.meta.main) {
-  Deno.exit(await main());
-}
+import.meta.main ? Deno.exit(await main()) : undefined;
