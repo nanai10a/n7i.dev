@@ -1,5 +1,5 @@
-import * as pug from "pug/mod.ts";
 import glob from "glob/glob.js";
+import * as pug from "pug/mod.ts";
 
 import * as packup_cli from "packup/cli.ts";
 import * as packup_install_util from "packup/install_util.ts";
