@@ -3,7 +3,6 @@ include ../mixins/header.pug
 include ../mixins/colored.pug
 include ../mixins/basic.pug
 include ../mixins/footer.pug
-include ../mixins/twemoji.pug
 
 - const sections = "my-6 first:mt-0 last:mb-0";
 
@@ -14,7 +13,7 @@ include ../mixins/twemoji.pug
   main
     div(class=cont)
       p(class=sections)
-        |#[+twemoji("👋")] hi, world. #[+twemoji("🌏")] #[br]
+        | 👋 hi, world. 🌏 #[br]
         | I'm a #[+textprim maker] / developer. #[br]
         | have writing code since #[+textprim 2020]. #[br]
         | love #[+textprim Rust], #[+textprim Kotlin].
