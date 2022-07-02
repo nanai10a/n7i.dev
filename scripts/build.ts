@@ -56,11 +56,20 @@ const main = async (...args: Array<string>) => {
 
   await mkDistDir();
 
-  const writings = (await Promise.all(prepares))
+  const building = (await Promise.all(prepares))
+    // => [dest path, write data] (flatten)
     .flat()
-    .map(([path, str]) => Deno.writeTextFile(path, str));
+    // => [writing promsise, dest path]
+    .map(([path, str]) => [Deno.writeTextFile(path, str), path] as const)
+    // assert that's html
+    .filter(([_, path]) => deps.std.path.parse(path).ext === ".html")
+    // => [void, packup promise]
+    .map(async ([pm, path]) => [
+      await pm,
+      await deps.packup.cli.main(["build", path]),
+    ]);
 
-  await Promise.all(writings);
+  await Promise.all(building);
 };
 
 const asDist = (path: string, ext: string): string => {
