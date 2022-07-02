@@ -1,10 +1,13 @@
 import * as deps from "/deps.ts";
 import * as consts from "/scripts/consts.ts";
+import { extend } from "/scripts/twind.config.ts";
 
 const TWIND_CFG = {
-  // hash: true, // TODO: improves size?
-  preflights: true,
   presets: [deps.twind.preset.autoprefix(), deps.twind.preset.tailwind()],
+  // hash: true, // TODO: improves size?
+  theme: {
+    extend,
+  },
 };
 
 const main = async () => {
