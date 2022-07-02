@@ -60,22 +60,15 @@ const main = async () => {
       [[], []] as readonly [readonly string[], readonly string[]]
     );
 
-  const buildings = paths
-    // => [writing promsise, dest path]
+  const writings = paths
     .map((path, idx) => [Deno.writeTextFile(path, strs[idx]), path] as const)
-    // assert that's html
     .filter(([_, path]) => deps.std.path.parse(path).ext === ".html")
-    // => [void, packup promise]
-    .map(([pm, path]) => pm.then(() => deps.packup.cli.main(["build", path])));
+    .map(([pm, path]) => pm.then(() => path));
 
-  const result = { success: 0, failed: 0 };
-  for await (const code of buildings) {
-    code === 0 ? result.success++ : result.failed++;
-  }
+  const wrotes = await Promise.all(writings);
+  const code = await deps.packup.cli.main(["build", ...wrotes]);
 
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
-
-  console.log(`packup: success - ${result.success}, failed - ${result.failed}`);
 
   const builts = [] as string[];
   const walk = async (dir: string) => {
@@ -123,7 +116,7 @@ const main = async () => {
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
   console.log(`compressed: ${files} files (.br & .gz)`);
 
-  return Number(result.failed !== 0);
+  return Number(code !== 0);
 };
 
 const asDist = (path: string, ext: string): string => {
