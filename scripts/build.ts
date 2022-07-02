@@ -77,6 +77,52 @@ const main = async () => {
 
   console.log(`packup: success - ${result.success}, failed - ${result.failed}`);
 
+  const builts = [] as string[];
+  const walk = async (dir: string) => {
+    for await (const path of Deno.readDir(dir)) {
+      if (path.isDirectory) {
+        await walk(path.name);
+      } else if (
+        path.isFile &&
+        !path.name.endsWith(".br") &&
+        !path.name.endsWith(".gz")
+      ) {
+        builts.push(deps.std.path.join(consts.DIST_DIR, path.name));
+      }
+    }
+  };
+  await walk(consts.DIST_DIR);
+
+  const encoder = new TextEncoder();
+  const compressings = builts
+    .map((path) => Deno.readTextFile(path))
+    .map(async (text) => encoder.encode(await text))
+    .map(
+      (byte) =>
+        [
+          (async () =>
+            deps.brotli.compress(await byte, undefined, 11, undefined))(),
+          (async () =>
+            deps.pako.gzip(await byte, { level: 9 }) as Uint8Array)(),
+        ] as const
+    )
+    .map(
+      ([br, gz], idx) =>
+        [
+          [builts[idx] + ".br", br],
+          [builts[idx] + ".gz", gz],
+        ] as const
+    )
+    .flat()
+    .map(async ([path, compressing]) =>
+      Deno.writeFile(path, await compressing)
+    );
+
+  const files = (await Promise.all([...compressings])).length / 2;
+
+  console.log("\n--- --- --- --- --- --- --- --- ---\n");
+  console.log(`compressed: ${files} files (.br & .gz)`);
+
   return Number(result.failed !== 0);
 };
 
