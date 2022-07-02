@@ -7,6 +7,7 @@
     "brotli/": "https://deno.land/x/brotli@v0.1.4/",
     "oak/": "https://deno.land/x/oak@v10.6.0/",
     "packup/": "https://deno.land/x/packup@v0.1.12/",
+    "pako/": "https://deno.land/x/pako@v2.0.3/",
 
     "glob/": "https://esm.sh/glob@8.0.3/",
     "twind/": "https://esm.sh/twind@1.0.0-next.38/",

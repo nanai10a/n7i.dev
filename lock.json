@@ -629,6 +629,7 @@
   "https://deno.land/x/packup@v0.1.12/vendor/esbuild_deno_loader/mod.ts": "84df63f1c816a95b1c1e60f80e2dcf85f9e4d13fb6e89b8ee3ae0c61da61caa7",
   "https://deno.land/x/packup@v0.1.12/vendor/esbuild_deno_loader/src/deno.ts": "1e9f614091b14cc2a98808bfbb0e4e8005d59003a803f24e1c0c7bd81b0a801c",
   "https://deno.land/x/packup@v0.1.12/vendor/esbuild_deno_loader/src/loader.ts": "636d0dc732c63a90883089abc4cfc2c154991f3978f14437bd0226abfc5c6db5",
+  "https://deno.land/x/pako@v2.0.3/pako.js": "5c4fb94476dea571ba33a6074b4ea25a0508b347c6f453110202ddf4ddbc6991",
   "https://deno.land/x/path_to_regexp@v6.2.0/index.ts": "e94c04a44bbecac99ff2db2d831afe98b423e627b775cb57fc7935f848c64c51",
   "https://esm.sh/@twind/preset-autoprefix@1.0.0-next.38/preset-autoprefix.js": "114ca5a1c6ca49ef9d91b66b869f3f4e1f50b2b9c42e01f9af2067c9ab53f9df",
   "https://esm.sh/@twind/preset-tailwind@1.0.0-next.38/preset-tailwind.js": "a7ae1c55b26706b3b89924042af7239ba61ae87106fd49cb79efdace43b4ec3d",
