@@ -1,9 +1,5 @@
 import * as deps from "/deps.ts";
-
-const SOURCE_FILES = "pages/**/*.pug";
-const DIST_DIR = "dist";
-
-const CSS_INJECT_POINT = "__css_href_inject__";
+import * as consts from "/scripts/consts.ts";
 
 const TWIND_CFG = {
   // hash: true, // TODO: improves size?
@@ -12,7 +8,7 @@ const TWIND_CFG = {
 };
 
 const main = async () => {
-  const glob = new deps.glob.Glob(SOURCE_FILES, { sync: true });
+  const glob = new deps.glob.Glob(consts.SOURCE_FILES, { sync: true });
   const expand = glob.found;
 
   const tw = deps.twind.setup(TWIND_CFG);
@@ -72,7 +68,7 @@ const asDist = (path: string, ext: string): string => {
 
   const removed = parsed.dir.split(deps.std.path.SEP_PATTERN).slice(1);
 
-  parsed.dir = deps.std.path.join(DIST_DIR, ...removed);
+  parsed.dir = deps.std.path.join(consts.DIST_DIR, ...removed);
   parsed.base = "";
   parsed.ext = ext;
 
@@ -93,7 +89,7 @@ const addHash = async (path: string, data: string): Promise<string> => {
 };
 
 const addCss = (html: string, link: string): string =>
-  html.replace(CSS_INJECT_POINT, deps.std.path.join("/", link));
+  html.replace(consts.CSS_INJECT_POINT, deps.std.path.join("/", link));
 
 const atPath = (path: string): string => {
   const parsed = deps.std.path.parse(path);
@@ -105,7 +101,7 @@ const atPath = (path: string): string => {
 
 const mkDistDir = async () => {
   try {
-    await Deno.mkdir(DIST_DIR);
+    await Deno.mkdir(consts.DIST_DIR);
   } catch (e) {
     if (!(e instanceof Deno.errors.AlreadyExists)) {
       throw e;
