@@ -4,8 +4,7 @@
   },
   "importMap": "import_map.json",
   "tasks": {
-    "clean": "deno task clean:packup",
-    "clean:packup": "deno run --allow-write=dist scripts/clean.ts",
+    "clean": "rm -rf dist",
     "install": "deno task install:packup",
     "install:packup": "deno run --allow-env --allow-net=deno.land --allow-read --allow-write=$DENO_DIR/packup,$HOME/.deno/packup scripts/install_packup.ts",
     "cache:r": "deno task cache",
