@@ -9,17 +9,19 @@ let's visit: [n7i.dev](https://n7i.dev)
 or if you want to see locally, then:
 
 ```sh
-# install pnpm
-npm i -g pnpm
+# prepare: https://deno.land/manual/getting_started/installation
 
-# install dependencies
-pnpm i
+# pre-download dependencies
+deno task cache:r
+
+# install required files
+deno task install
 
 # build pages
-pnpm build
+deno task build
 
 # start dev server
-pnpm dev
+deno task serve
 ```
 
 ... and open [localhost:3000](http://localhost:3000) in your browser.
