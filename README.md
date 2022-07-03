@@ -35,7 +35,7 @@ cargo install ripgrep sd
 cat mt3-built.css | ./replace.sh
 ```
 
-... then output can copy into `tailwind.config.js` .  
+... then output can copy into `scripts/twind.config.ts` .  
 `replace.sh` converts `mt3-built.css` as js code.
 
 in feature, this sh is replaced as js.  
