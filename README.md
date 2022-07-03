@@ -54,16 +54,16 @@ because it's depending `rg` , `sd` . they are so good tools, but take a little t
     - [ ] `/site` : `/link`
 - [ ] **v0.6**
   - [ ] implements menubar from `/` page
-- [ ] **v0.5**
-  - [ ] migrate node to deno
-    - [ ] initial deno project
-    - [ ] migrate node tasks
-    - [ ] migrate node actions
-  - [ ] replace systems
-    - [ ] [kt3k/packup](https://github.com/kt3k/packup)
-    - [ ] [lumeland/pug](https://github.com/lumeland/pug)
-    - [ ] [tw-in-js/twind](https://github.com/tw-in-js/twind)
-    - [ ] [iconify (web component)](https://docs.iconify.design/iconify-icon)
+- [x] **v0.5**
+  - [x] migrate node to deno
+    - [x] initial deno project
+    - [x] migrate node tasks
+    - [x] migrate node actions
+  - [x] replace systems
+    - [x] [kt3k/packup](https://github.com/kt3k/packup)
+    - [x] [lumeland/pug](https://github.com/lumeland/pug)
+    - [x] [tw-in-js/twind](https://github.com/tw-in-js/twind)
+    - [x] [iconify (web component)](https://docs.iconify.design/iconify-icon)
 - [x] **v0.4**
   - [x] styling `<a />`
 - [x] **v0.3**
