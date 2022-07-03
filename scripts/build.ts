@@ -2,7 +2,28 @@ import * as deps from "/deps.ts";
 import * as consts from "/scripts/consts.ts";
 import twind_config from "/scripts/twind.config.ts";
 
-const main = async () => {
+const main = async (args = Deno.args) => {
+  console.log("\n--- --- --- --- --- --- --- --- ---\n");
+
+  const parsedArgs = {
+    compress: false,
+  };
+
+  console.log("args:");
+  for (const arg of args) {
+    let modified;
+
+    switch (arg) {
+      case "-c":
+      case "--compress":
+        parsedArgs.compress = true;
+        modified = "enable compression";
+        break;
+    }
+
+    console.log(`  ${arg} : ${modified ?? "unrecognized"}`);
+  }
+
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
 
   const glob = new deps.glob.Glob(consts.SOURCE_FILES, { sync: true });
