@@ -6,11 +6,7 @@ mixin head(title)
       meta(name="viewport" content="width=device-width")
       meta(name="colorscheme" content="dark light")
 
-      if title
-        title #{ title } - n7i.dev
-      else
-        title n7i.dev
-
+      title #{ title ? `${title} - n7i.dev` : "n7i.dev" }
       meta(name="description" content="site of nanai.")
       meta(name="author" content="Nanai Jua")
 
