@@ -1,14 +1,6 @@
 import * as deps from "/deps.ts";
 import * as consts from "/scripts/consts.ts";
-import { extend } from "/scripts/twind.config.ts";
-
-const TWIND_CFG = {
-  presets: [deps.twind.preset.autoprefix(), deps.twind.preset.tailwind()],
-  // hash: true, // TODO: improves size?
-  theme: {
-    extend,
-  },
-};
+import twind_config from "/scripts/twind.config.ts";
 
 const main = async () => {
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
@@ -16,7 +8,7 @@ const main = async () => {
   const glob = new deps.glob.Glob(consts.SOURCE_FILES, { sync: true });
   const expand = glob.found;
 
-  const tw = deps.twind.setup(TWIND_CFG);
+  const tw = deps.twind.setup(twind_config);
 
   const preparings = expand
     // => [source path, rendered result]
