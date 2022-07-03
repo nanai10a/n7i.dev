@@ -5,7 +5,8 @@ include ../mixins/basic.pug
 include ../mixins/footer.pug
 
 mixin icon(name)
-  iconify-icon(class=elemicon icon=name)
+  span(class=elemicon)
+    iconify-icon(icon=name inline)
 
 +head("skill")
   +header

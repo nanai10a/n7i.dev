@@ -17,7 +17,8 @@ include ../mixins/footer.pug
           if val.wip
             // prettier-ignore: wasn't recognized interpolation with back quote
             a(class=`text-errl dark:text-errd ${linkmarke}` href=val.href title="*under construction*")
-              iconify-icon(class="my-auto mr-3 inline iconify-inline" icon="ic:round-error")
+              span(class="my-auto mr-3 inline")
+                iconify-icon(icon="ic:round-error" inline)
               | #{ key }
           else
             a(href=val.href title="jump to another site.")= key
