@@ -89,6 +89,11 @@ const main = async (args = Deno.args) => {
 
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
 
+  if (!parsedArgs.compress) {
+    console.log("no compression");
+    return Number(code !== 0);
+  }
+
   const builts = [] as string[];
   const walk = async (dir: string) => {
     for await (const path of Deno.readDir(dir)) {
