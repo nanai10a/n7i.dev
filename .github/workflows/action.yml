@@ -32,6 +32,9 @@ jobs:
       - name: install required files
         run: deno task install
 
+      - name: check types
+        run: deno task check
+
       - name: check lint
         run: deno task lint
 
