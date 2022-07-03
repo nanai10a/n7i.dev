@@ -1,5 +1,5 @@
 import * as brotli from "brotli/mod.ts";
-import glob from "glob/glob.js";
+import glob from "glob";
 import * as oak from "oak/mod.ts";
 import * as pako from "pako/pako.js";
 import * as pug from "pug/mod.ts";
@@ -11,9 +11,9 @@ const packup = {
   install_util: packup_install_util,
 };
 
-import * as twind_mod from "twind/twind.js";
-import twind_preset_autoprefix_mod from "@twind/preset-autoprefix/preset-autoprefix.js";
-import twind_preset_tailwind_mod from "@twind/preset-tailwind/preset-tailwind.js";
+import * as twind_mod from "twind";
+import twind_preset_autoprefix_mod from "@twind/preset-autoprefix";
+import twind_preset_tailwind_mod from "@twind/preset-tailwind";
 const twind = {
   ...twind_mod,
   preset: {
