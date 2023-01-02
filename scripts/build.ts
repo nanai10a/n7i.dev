@@ -26,8 +26,7 @@ const main = async (args = Deno.args) => {
 
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
 
-  const glob = new deps.glob.Glob(consts.SOURCE_FILES, { sync: true });
-  const expand = glob.found;
+  const expand = deps.glob.sync(consts.SOURCE_FILES) as Array<string>;
 
   const tw = deps.twind.setup(twind_config);
 
