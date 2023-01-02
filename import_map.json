@@ -9,16 +9,11 @@
     "packup/": "https://deno.land/x/packup@v0.2.2/",
     "pako/": "https://deno.land/x/pako@v2.0.3/",
 
-    "glob": "https://esm.sh/glob@8.0.3?bundle",
-    "@twind/core": "https://esm.sh/@twind/core@1.1.2?bundle",
-    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.6?bundle",
-    "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.2?bundle",
+    "glob": "npm:glob@8.0.3",
+    "@twind/core": "npm:@twind/core@1.1.2",
+    "@twind/preset-autoprefix": "npm:@twind/preset-autoprefix@1.0.6",
+    "@twind/preset-tailwind": "npm:@twind/preset-tailwind@1.1.2",
 
-    "pug/": "https://cdn.jsdelivr.net/gh/lumeland/pug@v0.1.4/",
-
-    "https://jspm.dev/@import-maps/resolve@1.0.1": "https://esm.sh/@import-maps/resolve@1.0.1?bundle",
-    "events": "https://esm.sh/events?bundle",
-    "fs": "https://esm.sh/@types/node?bundle/fs.d.ts",
-    "minimatch": "https://esm.sh/@types/minimatch?bundle/index.d.ts"
+    "pug/": "https://cdn.jsdelivr.net/gh/lumeland/pug@v0.1.4/"
   }
 }
