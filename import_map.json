@@ -3,16 +3,16 @@
     "/": "./",
     "./": "./",
 
-    "std/": "https://deno.land/std@v0.146.0/",
+    "std/": "https://deno.land/std@v0.170.0/",
     "brotli/": "https://deno.land/x/brotli@v0.1.4/",
-    "oak/": "https://deno.land/x/oak@v10.6.0/",
-    "packup/": "https://deno.land/x/packup@v0.1.12/",
+    "oak/": "https://deno.land/x/oak@v11.1.0/",
+    "packup/": "https://deno.land/x/packup@v0.2.2/",
     "pako/": "https://deno.land/x/pako@v2.0.3/",
 
     "glob": "https://esm.sh/glob@8.0.3?bundle",
-    "twind": "https://esm.sh/twind@1.0.0-next.38?bundle",
-    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.0-next.38?bundle",
-    "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.0.0-next.38?bundle",
+    "@twind/core": "https://esm.sh/@twind/core@1.1.2?bundle",
+    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.6?bundle",
+    "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.2?bundle",
 
     "pug/": "https://cdn.jsdelivr.net/gh/lumeland/pug@v0.1.4/",
 

@@ -5,13 +5,11 @@ import * as pako from "pako/pako.js";
 import * as pug from "pug/mod.ts";
 
 import * as packup_cli from "packup/cli.ts";
-import * as packup_install_util from "packup/install_util.ts";
 const packup = {
   cli: packup_cli,
-  install_util: packup_install_util,
 };
 
-import * as twind_mod from "twind";
+import * as twind_mod from "@twind/core";
 import twind_preset_autoprefix_mod from "@twind/preset-autoprefix";
 import twind_preset_tailwind_mod from "@twind/preset-tailwind";
 const twind = {
