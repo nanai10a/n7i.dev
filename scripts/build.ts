@@ -84,8 +84,11 @@ const main = async (args = Deno.args) => {
     .map(([pm, path]) => pm.then(() => path))
     .map(async (path) => deps.std.path.normalize(await path));
 
+  let code = 0;
   const wrotes = await Promise.all(writings);
-  const code = await deps.packup.cli.main(["build", ...wrotes]);
+  for (const wrote of wrotes) {
+    code += await deps.packup.cli.main(["build", wrote]);
+  }
 
   console.log("\n--- --- --- --- --- --- --- --- ---\n");
 

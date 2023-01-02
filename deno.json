@@ -12,7 +12,7 @@
     "cache": "deno cache deps.ts",
     "check": "deno check $(sh -c 'echo *.ts **/*.ts')",
     "lint": "deno lint --ignore=dist,node",
-    "build": "deno run --allow-env --allow-read --allow-run --allow-write=dist scripts/build.ts",
+    "build": "deno run --allow-env --allow-read --allow-run --allow-write=$HOME/.cache/esbuild,/tmp,dist --allow-net=registry.npmjs.org scripts/build.ts",
     "serve": "deno run --allow-env --allow-net=0.0.0.0 --allow-read scripts/serve.ts"
   }
 }
