@@ -29,9 +29,6 @@ jobs:
       - name: pre-download and validate dependencies
         run: deno task cache:r
 
-      - name: install required files
-        run: deno task install
-
       - name: check types
         run: deno task check
 
