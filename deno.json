@@ -9,7 +9,7 @@
     "install:packup": "deno run --allow-env --allow-net=deno.land --allow-read --allow-write=$DENO_DIR/packup,$HOME/.deno/packup scripts/install_packup.ts",
     "cache:r": "deno task cache",
     "cache:w": "deno task cache --lock-write",
-    "cache": "deno cache deps.ts --lock lock.json",
+    "cache": "deno cache deps.ts",
     "check": "deno check $(sh -c 'echo *.ts **/*.ts')",
     "lint": "deno lint --ignore=dist,node",
     "build": "deno run --allow-env --allow-read --allow-run --allow-write=dist scripts/build.ts",
