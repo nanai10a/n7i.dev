@@ -36,7 +36,7 @@ const main = async (args = Deno.args) => {
     // assert that's string
     .filter(([_, html]) => typeof html === "string")
     // => [...] (cast only)
-    .map((turple) => turple as [string, string])
+    .map((tuple) => tuple as [string, string])
     // => [..., { rendered html, extracted css }]
     .map(([path, html]) => [path, deps.twind.extract(html, tw)] as const)
     // => [
@@ -52,13 +52,13 @@ const main = async (args = Deno.args) => {
     )
     // => [[..., html injected link to css], [...]]
     .map(
-      async (turple) =>
+      async (tuple) =>
         [
           [
-            (await turple)[0][0],
-            addCss((await turple)[0][1], atPath((await turple)[1][0])),
+            (await tuple)[0][0],
+            addCss((await tuple)[0][1], atPath((await tuple)[1][0])),
           ],
-          (await turple)[1],
+          (await tuple)[1],
         ] as const
     );
 
