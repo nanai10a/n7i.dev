@@ -1,5 +1,5 @@
 import * as brotli from "brotli/mod.ts";
-import glob from "glob";
+import * as glob from "glob";
 import * as oak from "oak/mod.ts";
 import * as pako from "pako/pako.js";
 import * as pug from "pug/mod.ts";
